@@ -1,4 +1,7 @@
 Sharehub::Application.routes.draw do
+
+  resources :users
+
   get "static_page/about"
   match "/about" => "static_page#about"
 
@@ -6,7 +9,7 @@ Sharehub::Application.routes.draw do
   match "/help" => "static_page#help"
 
   get "static_page/contact"
-  match "/contact" => "static_page#contact"
+  match "/contact" ,to: "static_page#contact"
 
 
   # The priority is based upon order of creation:

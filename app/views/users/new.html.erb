@@ -1,0 +1,11 @@
+<%= error_messages_for(@user) %>
+<div id="row-fluid">
+  <div class="span12 offset6">
+    <h1>注册</h1>
+    <%= form_for(@user) do |f| %>
+      <%= render partial:"form", locals:{f:f} %>
+    <%= f.submit "创建用户",class:"btn btn-large btn-primary" %>
+  <% end %>
+  </div>
+</div>
+

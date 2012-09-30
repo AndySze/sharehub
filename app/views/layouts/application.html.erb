@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sharehub</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<title>Sharehub</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= render "layouts/header" %>
 <div class="container-fluid">
-<%= yield %>
-<%= render "layouts/footer" %>
+  <%= yield %>
+  <%= render "layouts/footer" %>
+  <%= debug(params) if Rails.env.development? %>
 </div>
 
 </body>
