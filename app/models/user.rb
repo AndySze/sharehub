@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   validates :name,:presence => true,:uniqueness => true
   validates :email,:format => {:with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i},
             :confirmation => true, :presence => true
-  validates :password, length: {minimum: 6}
+  validates :password, :length => {minimum: 6} ,:on => :create
+  validates :user_type, :presence => true
 
   before_save :create_hashed_password
   after_save :clear_password

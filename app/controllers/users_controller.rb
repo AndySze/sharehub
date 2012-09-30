@@ -3,23 +3,23 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @users = User.all
+  end
+
   def edit
     @user = User.find(params[:id])
   end
 
   def create
-    if params[:password] == params[:confirm_password]
-      @user = User.create(params[:user])
+      @user = User.create(params[:user]) unless params[:password] != params[:confirm_password]
       if @user.save
-        flash[:success] ="Welcome to ShareHub!"
+        session[:user_id] = @user.id
+        session[:user_name] = @user.name
         redirect_to @user
       else
         render 'new'
       end
-    else
-      flash[:error] = "password not match!"
-      return false
-    end
   end
 
   def show

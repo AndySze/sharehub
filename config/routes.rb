@@ -1,6 +1,11 @@
 Sharehub::Application.routes.draw do
 
+  resources :sessions
+  match "/signin" => "sessions#new"
+  match "/logout" => "sessions#delete"
+
   resources :users
+  match "/signup" => "users#new"
 
   get "static_page/about"
   match "/about" => "static_page#about"
@@ -49,6 +54,7 @@ Sharehub::Application.routes.draw do
   #     resources :comments
   #     resources :sales do
   #       get 'recent', :on => :collection
+
   #     end
   #   end
 
