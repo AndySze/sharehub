@@ -1,11 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span9">
-      <h1><%= @user.name %></h1>
-      <h2><%= @user.email %></h2>
-      <% if @user.name == session[:user_name] %>
-      <div id="upload_design">
-
+      <div id="update_design">
         <%= form_for(@design) do |f| %>
           <%= render 'shared/error_messages',object: f.object %>
           <%= f.label :title,"设计标题" %>
@@ -15,10 +11,12 @@
           <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
         <% end %>
       </div>
-    <% end %>
     </div>
     <div class="span3">
-      <%= render partial:"shared/user_side",locals:{:user => @user} %>
+      <div class="well sidebar">
+        <p>SideBar</p>
       </div>
+    </div>
   </div>
 </div>
+

@@ -1,8 +1,11 @@
 Sharehub::Application.routes.draw do
 
-  resources :sessions
+  resources :designs
+  root :to => "designs#index"
+
+  resources :sessions, only: [:new,:create,:destroy]
   match "/signin" => "sessions#new"
-  match "/logout" => "sessions#delete"
+  match "/logout" => "sessions#destroy", via: :delete
 
   resources :users
   match "/signup" => "users#new"

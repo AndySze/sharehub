@@ -1,0 +1,34 @@
+<div class="well sidebar">
+  <h4><%= user.name %></h4>
+  <p><%= user.email %></p>
+  <hr>
+  <ul class="nav nav-tabs nav-stacked">
+    <li><%= link_to "0个专辑","#" %></li>
+    <li><%= link_to "0个上传","#" %></li>
+    <li><%= link_to "20个设计","#" %></li>
+  </ul>
+  <h5>TA的标签</h5>
+  <ul class="nav nav-tabs nav-stacked">
+    <li><%= link_to "#" do %>
+    <i class="icon-tag"></i> 后现代
+  <% end %>
+    </li>
+    <li><%= link_to "#" do %>
+    <i class="icon-tag"></i> 欧式风格
+  <% end %>
+    </li>
+    <li><%= link_to "#" do %>
+    <i class="icon-tag"></i> 代古典
+  <% end %>
+    </li>
+  </ul>
+  <h5>我关注的人</h5>
+  <h5>发现</h5>
+      <div class="thumbnail">
+        <%= link_to '#' do %>
+        <%= image_tag("/images/explore.jpg",:alt => "explore", class:"img-rounded") %>
+        <h3>发现</h3>
+      <% end %>
+            <p>balabalbala</p>
+          </div>
+</div>

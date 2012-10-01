@@ -24,6 +24,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.name == session[:user_name]
+      @design = @user.designs.build
+    end
+
   end
 
   def update

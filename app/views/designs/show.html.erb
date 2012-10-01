@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9">
+      <div class="page-header">
+        <h1><%= @user.name %>的设计收藏</h1>
+      </div>
+    <div class="container-fluid">
+      <h4><%= @design.title %></h4>
+            <% if session[:user_id]==@design.user_id %>
+              <%= link_to("编辑",{:action => 'edit',:id => @design.id} ) %>
+          <% end %>
+      <div class="design-display">
+      <%= image_tag("#{@design.image}",alt:"#{@design.title}") %>
+    </div>
+      <h4>此设计所属标签</h4>
+      <div class="tags">
+      <% 10.times do |n| %>
+        <%= check_box_tag "标签#{n}","#{n}" %>标签<%= "#{n}" %>
+      <% end %>
+      </div>
+    </div>
+    </div>
+    <div class="span3">
+      <%= render partial: "shared/user_side",locals: {:user => @user} %>
+    </div>
+  </div>
+</div>

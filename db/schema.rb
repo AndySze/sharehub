@@ -11,7 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930084526) do
+ActiveRecord::Schema.define(:version => 20121001014347) do
+
+# Could not dump table "designs" because of following StandardError
+#   Unknown type 'iteger' for column 'user_id'
 
   create_table "users", :force => true do |t|
     t.string   "name"

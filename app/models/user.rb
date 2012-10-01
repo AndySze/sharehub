@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password, :length => {minimum: 6} ,:on => :create
   validates :user_type, :presence => true
 
+  has_many :designs
+
   before_save :create_hashed_password
   after_save :clear_password
 
