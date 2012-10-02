@@ -1,24 +1,29 @@
 Sharehub::Application.routes.draw do
 
-  resources :designs
-  root :to => "designs#index"
+
 
   resources :sessions, only: [:new,:create,:destroy]
   match "/signin" => "sessions#new"
-  match "/logout" => "sessions#destroy", via: :delete
+  match "/logout" => "sessions#destroy"
 
-  resources :users
+  resources :users,:shallow => true do
+    resources :collections
+    resources :designs
+  end
+  root :to => "designs#index"
+
+  resources :collections,:only => [:index]
+  resources :designs,:only => [:index]
+
+
   match "/signup" => "users#new"
 
-  get "static_page/about"
+  resources :static_page, only:[:about,:help,:contact]
+
   match "/about" => "static_page#about"
-
-  get "static_page/help"
   match "/help" => "static_page#help"
-
-  get "static_page/contact"
   match "/contact" ,to: "static_page#contact"
-
+  match "/index" ,to: "static_page#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

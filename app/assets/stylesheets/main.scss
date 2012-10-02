@@ -1,7 +1,49 @@
 @import 'bootstrap';
 
 .item {
-  width: 220px;
+  width: 275px;
   margin: 10px;
   float: left;
+}
+
+footer {
+  background:#252525;
+  border-top:0;
+  margin-top: 19px;
+  padding-top: 19px;
+
+  h4 {
+    color:#999;
+  }
+
+  p {
+    color:#999;
+  }
+
+  a {
+    color:#fff;
+  }
+  a:hover {
+    color:#fff;
+    text-decoration:underline
+  }
+
+  #footer-floor {
+    h4{color:#fff} 
+    background:#1b1b1b;
+    #elsewhere-msg {
+      padding-top:18px;
+    } 
+    #elsewhere-icons{
+      padding-top:13px;
+      a {
+        float:left;
+        width:35px;
+        height:35px;
+        overflow:hidden;
+        text-indent:-900px;
+        margin:0 5px 0 0
+      } 
+    }
+  }
 }

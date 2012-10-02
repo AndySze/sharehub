@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:user_name] = nil
     flash[:notice] = "You have been logged out."
-    redirect_to signin_path
+    redirect_to root_path
   end
 
 end

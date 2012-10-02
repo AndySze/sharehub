@@ -13,7 +13,9 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <%=session[:user_name] %><span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><%= link_to "我的帐号",'#' %></li>
+          <li><%= link_to "我的专辑", user_collections_path(session[:user_id]) %></li>
+          <li><%= link_to "我的设计", user_designs_path(session[:user_id]) %></li>
+          <li><%= link_to "我的帐号", edit_user_path(session[:user_id]) %></li>
           <li><%= link_to "退出",logout_path %></li>
         </ul>
         </li>
@@ -21,16 +23,17 @@
     <% else %>
         <div class="nav pull-right">
         <ul class="nav">
-          <li><%= link_to "注册",signup_path,class:"navbar-text pull-right" %></li>
-          <li><%= link_to "登录",signin_path,class:"navbar-text pull-right" %></li>
+          <!-- Link to trigger modal -->
+          <li><a href="#signupModal" role="button" class="navbar-text pull-right" data-toggle="modal">注册</a></li>
+          <li><a href="#loginModal" role="button" class="navbar-text pull-right" data-toggle="modal">登录</a></li>
         </ul>
       </div>
     <% end %>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="active"><a href="#">浏览家居</a></li>
-          <li><a href="#about">收藏</a></li>
-          <li><a href="#contact">用户</a></li>
+          <li><%= link_to "浏览设计",designs_path %></li>
+          <li><%= link_to "专辑",collections_path %></li>
+          <li><%= link_to "用户",users_path %></li>
           <li><%= link_to "帮助",help_path %></li>
           <li><%= link_to "关于",about_path %></li>
           <li><%= link_to "联系我们",contact_path %></li>

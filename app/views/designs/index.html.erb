@@ -1,31 +1,33 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <h1>Designs#index</h1>
-      <ul class="thumbnails" >
-    <div id="main">
-    <% @designs.each do |design| %>
-      <li class="item">
-      <div class="thumbnail">
-        <%= link_to :action => 'show',:id => design.id do %>
-        <%= image_tag("#{design.image}",:alt => "#{design.title}", class:"img-rounded") %>
-        <h3> <%= "#{design.title}" %></h3>
-      <% end %>
-      <p><%= design.user_id %></p>
-    </div>
-          </li>
-          <% end %>
-      </div>
-        </ul>
+
+    <% if @user %>
+      <div class="span9">
+
+      <%= render partial:"shared/content",locals:{designs:@designs} %>
+
+    </div> <!-- end of div class="span9" -->
+
+    <div class="span3">
+      <%= render partial:"shared/user_side",locals:{user:@user} %>
+    </div><!-- end of div class="span3" -->
+
+  <% else %>
+      <div class="span12">
+      <%= render partial:"shared/content",locals:{designs:@designs} %>
+    </div> <!-- end of div class="span12" -->
+  <% end %> <!-- end of Line4 if -->
+
   </div>
 </div>
-<script type="text/javascript">
+  <script type="text/javascript">
 
 var $container = $('#main');
 $container.imagesLoaded(function(){
   $container.masonry({
     itemSelector : '.item',
-    columnWidth : 240
+    columnWidth : 295
   });
 });
 
-</script>
+  </script>

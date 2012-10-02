@@ -2,20 +2,20 @@
   <div class="row-fluid">
     <div class="span9">
       <div id="update_design">
-        <%= form_for(@design) do |f| %>
+        <%= form_for (@design) do |f| %>
           <%= render 'shared/error_messages',object: f.object %>
           <%= f.label :title,"设计标题" %>
           <%= f.text_field :title %>
           <%= f.label :image,"图片地址" %>
           <%= f.text_field :image %>
+          <%= f.label :collection_id,"所属专辑" %>
+          <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true} %>
           <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
         <% end %>
       </div>
     </div>
     <div class="span3">
-      <div class="well sidebar">
-        <p>SideBar</p>
-      </div>
+        <%= render partial: "shared/user_side",locals:{user:@user} %>
     </div>
   </div>
 </div>

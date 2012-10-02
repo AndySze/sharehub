@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
   def new
+    session[:url] = request.referer
     @user = User.new
   end
 
   def index
+    session[:url] = request.referer
     @users = User.all
   end
 
   def edit
+    session[:url] = request.referer
     @user = User.find(params[:id])
   end
 
@@ -18,14 +21,16 @@ class UsersController < ApplicationController
         session[:user_name] = @user.name
         redirect_to @user
       else
-        render 'new'
+        render session[:url]
       end
   end
 
   def show
+    session[:url] = request.referer
     @user = User.find(params[:id])
     if @user.name == session[:user_name]
       @design = @user.designs.build
+      @collection = @user.collections.build
     end
 
   end
@@ -37,7 +42,7 @@ class UsersController < ApplicationController
         flash[:success] ="Welcome to ShareHub!"
         redirect_to @user
       else
-        render 'edit'
+        render session[:url]
       end
     else
       flash[:error] = "password not match!"

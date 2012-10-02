@@ -3,8 +3,8 @@
   <p><%= user.email %></p>
   <hr>
   <ul class="nav nav-tabs nav-stacked">
-    <li><%= link_to "0个专辑","#" %></li>
-    <li><%= link_to "0个上传","#" %></li>
+    <li><%= link_to "#{user.collections.count}个专辑",user_collections_path(user) %></li>
+    <li><%= link_to "#{user.designs.count}个上传",user_designs_path(user) %></li>
     <li><%= link_to "20个设计","#" %></li>
   </ul>
   <h5>TA的标签</h5>

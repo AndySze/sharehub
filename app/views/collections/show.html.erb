@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9">
+      <h1><%= @user.name %></h1>
+      <%= error_messages_for(@user) %>
+      <% if @user.name == session[:user_name] %>
+      <div id="upload_design">
+
+        <h3>为专辑上传新设计</h3>
+        <%= form_for([@user,@design]) do |f| %>
+          <%= render 'shared/error_messages',object: f.object %>
+          <%= f.label :title,"设计标题" %>
+          <%= f.text_field :title,class:"input-xlarge" %>
+          <%= f.label :image,"图片地址" %>
+          <%= f.text_field :image,class:"input-xlarge" %>
+          <%= f.label :collection_id,"所属专辑" %>
+          <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true},class:"input-xlarge" %>
+          <br>
+          <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+    <div class="span3">
+      <%= render partial:"shared/user_side",locals:{:user => @user} %>
+      </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+//$("#newCollection").modal()                       // initialized with defaults
+</script>
+
