@@ -6,6 +6,7 @@ class DesignsController < ApplicationController
       @designs = @user.designs
     else
 
+      @categorys = Category.all
       @designs = Design.all
     end
   end
@@ -24,6 +25,7 @@ class DesignsController < ApplicationController
     @design = Design.find(params[:id])
     @user = User.find(@design.user_id)
     @collection = Collection.find(@design.collection_id)
+    @category = Category.find(@design.category_id) if @design.category_id
   end
 
   def edit

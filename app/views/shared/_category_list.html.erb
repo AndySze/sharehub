@@ -1,0 +1,18 @@
+<div class="well">
+  <h2>按照分类目录筛选</h2>
+  <% categorys.each do |category| %>
+
+    <% if current_category && category.id == current_category.id %>
+    <%= link_to "#{category.name}",'#',class:"btn disabled" %>
+  <% else %>
+    <%= link_to "#{category.name}",category,class:"btn" %>
+  <% end %>
+<% end %>
+
+  <% if current_category %>
+    <%= link_to "其它设计",'others',class:"btn" %>
+  <% else %>    
+    <%= link_to "其它设计",'#',class:"btn disabled" %>
+  <% end %>      
+</div>
+

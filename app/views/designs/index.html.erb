@@ -14,13 +14,26 @@
 
   <% else %>
       <div class="span12">
-      <%= render partial:"shared/content",locals:{designs:@designs} %>
-    </div> <!-- end of div class="span12" -->
-  <% end %> <!-- end of Line4 if -->
 
-  </div>
+      <div class="well">
+        <h2>按照分类目录筛选</h2>
+      <% @categorys.each do |category| %>
+
+        <%= link_to "#{category.name}",category,class:"btn" %>
+    <% end %>
+
+      <%= link_to "其它设计",'categorys/others',class:"btn" %>
+    </div>
+
+
+
+    <%= render partial:"shared/content",locals:{designs:@designs} %>
+  </div> <!-- end of div class="span12" -->
+<% end %> <!-- end of Line4 if -->
+
 </div>
-  <script type="text/javascript">
+</div>
+<script type="text/javascript">
 
 var $container = $('#main');
 $container.imagesLoaded(function(){
@@ -30,4 +43,4 @@ $container.imagesLoaded(function(){
   });
 });
 
-  </script>
+</script>

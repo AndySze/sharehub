@@ -7,16 +7,26 @@
       <div class="container-fluid">
         <h4><%= @design.title %></h4>
         <% if session[:user_id]==@design.user_id %>
-          <%= link_to("编辑",{:action => 'edit',:id => @design.id} ) %>
+          <%= link_to("编辑该设计的属性",{:action => 'edit',:id => @design.id} ) %>
       <% end %>
         <div class="design-display">
           <%= image_tag("#{@design.image}",alt:"#{@design.title}") %>
         </div>
-        <h4>此设计所在专辑</h4>
+        <h4>所在我的专辑</h4>
         <div class="collection">
           <%= @collection.name %>
+        <% if session[:user_id]==@design.user_id %>
           <!-- Link to trigger modal -->
-          <a href="#newCollection" role="button" class="" data-toggle="modal">编辑专辑</a>
+          <a href="#editCollection" role="button" class="" data-toggle="modal">修改专辑名称</a>
+        <% end %>
+        </div>
+        <h4>所在分类目录</h4>
+        <div class="category">
+          <% if @category %>
+          <%= @category.name %>
+        <% else %>
+          <%= "其它分类" %>
+        <% end %>
         </div>
         <h4>此设计所属标签</h4>
         <div class="tags">
@@ -35,7 +45,7 @@
 
 
 <!-- Modal -->
-<div id="newCollection" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; ">
+<div id="editCollection" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; ">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">编辑专辑</div>

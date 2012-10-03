@@ -12,15 +12,15 @@
 <div class="container-fluid">
   <%= yield %>
 </div>
-  <%= render "layouts/footer" %>
+<%= render "layouts/footer" %>
 
-  <% session.each do |k,v| %>
-    <%= "session[:#{k}] : #{v}" %><br>
+<% session.each do |k,v| %>
+  <%= "session[:#{k}] : #{v}" %><br>
   <% end %>
 
-  <%= debug(params) if Rails.env.development? %>
-
-<!-- Login Modal -->
+<%= debug(params) if Rails.env.development? %>
+<% unless session[:user_name] %>
+  <!-- Login Modal -->
 <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; ">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -30,11 +30,11 @@
 
     <%= form_tag(:controller =>'sessions', :action => 'create') do -%>
       <%= label_tag :name, "帐户" -%>
-      <%= text_field_tag :name -%>
-      <%= label_tag :password, "密码" -%>
-      <%= password_field_tag :password -%>
-      <p><%= submit_tag "登录",class:"btn btn-large btn-primary " -%></p>
-    <% end -%>
+    <%= text_field_tag :name -%>
+    <%= label_tag :password, "密码" -%>
+    <%= password_field_tag :password -%>
+    <p><%= submit_tag "登录",class:"btn btn-large btn-primary " -%></p>
+  <% end -%>
     <%= link_to "还不是会员，马上注册！",signup_path %>
 
   </div>
@@ -52,10 +52,16 @@
       <%= render partial:"shared/user_form", locals:{f:f} %>
     <%= f.submit "创建用户",class:"btn btn-large btn-primary" %>
   <% end %>
-  <%= link_to "已经有帐号了？立即登录",signin_path %>
+    <%= link_to "已经有帐号了？立即登录",signin_path %>
 
   </div>
 </div>
+
+<% end %>
+
+<script type="text/javascript">
+$("#signupModel").modal()                       // initialized with defaults
+</script>
 
 </body>
 </html>

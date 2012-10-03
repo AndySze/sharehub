@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+
+      <div class="span12">
+      <%= render partial:"shared/category_list",locals:{categorys:@categorys,current_category:@category} %>
+      <%= render partial:"shared/content",locals:{designs:@designs} %>
+    </div> <!-- end of div class="span12" -->
+
+  </div>
+</div>
+  <script type="text/javascript">
+
+var $container = $('#main');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 295
+  });
+});
+
+  </script>
+

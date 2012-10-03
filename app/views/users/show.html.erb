@@ -17,6 +17,8 @@
           <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]} %>
           <!-- Link to trigger modal -->
           <p><a href="#newCollection" role="button" class="" data-toggle="modal">新建专辑</a></p>
+          <%= f.label :category_id,"请选择分类目录" %>
+          <%= f.select :category_id,Category.all.collect{|s| [s.name,s.id]},{:include_blank => true} %><br>
           <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
         <% end %>
       </div>

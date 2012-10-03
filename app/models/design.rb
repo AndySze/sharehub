@@ -1,5 +1,5 @@
 class Design < ActiveRecord::Base
-  attr_accessible :image, :title, :user_id, :collection_id
+  attr_accessible :image, :title, :user_id, :collection_id, :category_id
 
   validates :title,:presence => true,:length => {maximum:100}
   validates :image,:presence => true
