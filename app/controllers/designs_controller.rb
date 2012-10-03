@@ -23,8 +23,8 @@ class DesignsController < ApplicationController
 
   def show
     @design = Design.find(params[:id])
-    @user = User.find(@design.user_id)
     @collection = Collection.find(@design.collection_id)
+    @user = User.find(@collection.user_id)
     @category = Category.find(@design.category_id) if @design.category_id
   end
 

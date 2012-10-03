@@ -5,6 +5,5 @@ class Design < ActiveRecord::Base
   validates :image,:presence => true
   validates :collection_id,:presence => true
 
-  belongs_to :users
   belongs_to :collections
 end
