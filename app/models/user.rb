@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :collections, :dependent => :destroy
 
   before_save :create_hashed_password
-  after_save :clear_password
+  after_save :clear_password,:create_default_collection
 
   attr_accessor :password, :confirm_password
 
@@ -56,5 +56,8 @@ class User < ActiveRecord::Base
     self.password = nil
   end
 
+  def create_default_collection
+    self.collections.create(name:"Default Collections")
+  end
 
 end

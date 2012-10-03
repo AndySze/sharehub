@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
       puts "success! #{authorized_user.id} #{authorized_user.name}"
     else
       flash[:error] = "Invalid username/password!"
-      redirect_to signin_path
+      redirect_to :back
       puts "falure!"
     end
 

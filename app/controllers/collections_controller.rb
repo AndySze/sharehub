@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
+
   def index
-    session[:url] = request.referer
     if params[:user_id]
       @user = User.find(params[:user_id])
       @collections = @user.collections
@@ -16,7 +16,7 @@ class CollectionsController < ApplicationController
       flash[:success] = "Collection Saved!"
       redirect_to @current_user
     else
-      redirect_to session[:url]
+      redirect_to :back
     end
 
   end
@@ -28,12 +28,11 @@ class CollectionsController < ApplicationController
       flash[:success] = "Collection Saved!"
       redirect_to @collection
     else
-      redirect_to session[:url]
+      redirect_to :back
     end
   end
 
   def show
-    session[:url] = request.referer
     @collection = Collection.find(params[:id])
     @user = User.find(@collection.user_id)
     if @user.name == session[:user_name]
