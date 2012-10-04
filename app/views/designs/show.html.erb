@@ -30,9 +30,13 @@
         </div>
         <h4>此设计所属标签</h4>
         <div class="tags">
-          <% 10.times do |n| %>
-            <%= check_box_tag "标签#{n}","#{n}" %>标签<%= "#{n}" %>
-        <% end %>
+          <% if @design.tags.any? %>
+            <% @design.tags.each do |tag| %>
+              <%= link_to "#{tag.name}",tag,class:"btn" %>
+            <% end %>
+          <% else %>
+            <p>此设计还没有设置标签</p>
+          <% end %>
         </div>
       </div>
     </div>

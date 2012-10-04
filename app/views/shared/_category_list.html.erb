@@ -3,16 +3,24 @@
   <% categorys.each do |category| %>
 
     <% if current_category && category.id == current_category.id %>
-    <%= link_to "#{category.name}",'#',class:"btn disabled" %>
+    <%= link_to '#',class:"btn disabled" do %>
+    <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+<% end %>
   <% else %>
-    <%= link_to "#{category.name}",category,class:"btn" %>
+    <%= link_to category,class:"btn" do %>
+    <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+<% end %>
   <% end %>
 <% end %>
 
   <% if current_category %>
-    <%= link_to "其它设计",'others',class:"btn" %>
+    <%= link_to 'others',class:"btn" do %>
+    <i class="icon-folder-open"></i>   其它设计
+  <% end %>
   <% else %>    
-    <%= link_to "其它设计",'#',class:"btn disabled" %>
+    <%= link_to '#',class:"btn disabled" do %>
+    <i class="icon-folder-open"></i>   其它设计
+  <% end %>
   <% end %>      
 </div>
 

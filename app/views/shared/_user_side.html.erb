@@ -9,18 +9,12 @@
   </ul>
   <h5>TA的标签</h5>
   <ul class="nav nav-tabs nav-stacked">
-    <li><%= link_to "#" do %>
-    <i class="icon-tag"></i> 后现代
+    <% user.tags.uniq.each do |tag| %>
+    <li><%= link_to tag do %>
+    <i class="icon-tag"></i> <%= "#{tag.name}" %>
   <% end %>
     </li>
-    <li><%= link_to "#" do %>
-    <i class="icon-tag"></i> 欧式风格
   <% end %>
-    </li>
-    <li><%= link_to "#" do %>
-    <i class="icon-tag"></i> 代古典
-  <% end %>
-    </li>
   </ul>
   <h5>我关注的人</h5>
   <h5>发现</h5>

@@ -1,0 +1,18 @@
+
+  <div class="well">
+    <h2>按照分类目录筛选</h2>
+    <% @categorys.each do |category| %>
+      <%= link_to category,class:"btn" do %>
+      <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+  <% end %>
+  <% end %>
+    <%= link_to '/categorys/others',class:"btn" do %>
+      <i class="icon-folder-open"></i>   其它设计
+  <% end %>
+  </div>
+
+
+    <%= render partial:"shared/tag_list",locals:{tags:@tags,current_tag:@current_tag} %>
+
+  <%= render partial:"shared/content",locals:{designs:@designs} %>
+  <%= render "shared/flow_script" %>

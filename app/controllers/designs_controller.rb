@@ -8,6 +8,7 @@ class DesignsController < ApplicationController
 
       @categorys = Category.all
       @designs = Design.all
+      @tags = Tag.all
     end
   end
 
@@ -34,6 +35,7 @@ class DesignsController < ApplicationController
   end
 
   def update
+    params[:design][:tag_ids] ||= []
     @design = Design.find(params[:id])
     @user = User.find(@design.user_id)
     if @design.update_attributes(params[:design])

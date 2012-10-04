@@ -28,12 +28,12 @@
   </div>
   <div class="modal-body">
 
-    <%= form_tag(:controller =>'sessions', :action => 'create') do -%>
+    <%= form_tag(:controller =>'sessions',:action => 'create') do -%>
       <%= label_tag :name, "帐户" -%>
     <%= text_field_tag :name -%>
     <%= label_tag :password, "密码" -%>
     <%= password_field_tag :password -%>
-    <p><%= submit_tag "登录",class:"btn btn-large btn-primary " -%></p>
+    <p><%= submit_tag "登录",class:"btn btn-large btn-success " -%></p>
   <% end -%>
     <%= link_to "还不是会员，马上注册！",signup_path %>
 
@@ -60,7 +60,7 @@
 <% end %>
 
 <script type="text/javascript">
-$("#signupModel").modal()                       // initialized with defaults
+//$("#signupModel").modal()                       // initialized with defaults
 </script>
 
 </body>

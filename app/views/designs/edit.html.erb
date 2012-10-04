@@ -3,31 +3,37 @@
     <div class="span9">
       <div class="page-header">
         <h1>编辑设计
-      </div>
-      <div id="update_design" class="container-fluid">
-        <div class="span4">
-          <%= form_for (@design) do |f| %>
-            <%= render 'shared/error_messages',object: f.object %>
-          <%= f.label :title,"设计标题" %>
-          <%= f.text_field :title %>
-          <%= f.label :image,"图片地址" %>
-          <%= f.text_field :image %>
-          <%= f.label :collection_id,"所属专辑" %>
-          <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true} %>
-          <%= f.label :collection_id,"所属分类" %>
-          <%= f.select :category_id,Category.all.collect{|s| [s.name,s.id]},{:include_blank => true} %><br>
-          <%= f.submit "更新设计",class:"btn btn-large btn-primary" %>
         </div>
-      <% end %>
-        <div class="span8">
-          <h4>设计预览</h4>
-          <%= image_tag("#{@design.image}", :alt => "#{@design.title}",class:"img-rounded") %>
+        <div id="update_design" class="container-fluid">
+          <div class="span4">
+            <%= form_for (@design) do |f| %>
+              <%= render 'shared/error_messages',object: f.object %>
+            <%= f.label :title,"设计标题" %>
+            <%= f.text_field :title %>
+            <%= f.label :image,"图片地址" %>
+            <%= f.text_field :image %>
+            <%= f.label :collection_id,"所属专辑" %>
+            <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true} %>
+            <%= f.label :collection_id,"所属分类" %>
+            <%= f.select :category_id,Category.all.collect{|s| [s.name,s.id]},{:include_blank => true} %><br>
+            <%= f.label :tag_id,"设置标签" %>
+            <% Tag.all.each do |tag| %>
+              <%= check_box_tag "design[tag_ids][]",tag.id,@design.tags.include?(tag) %>
+            <%= tag.name %>
+          <% end %>
+          <br>
+            <%= f.submit "更新设计",class:"btn btn-large btn-primary" %>
+        <% end %>
+          </div>
+          <div class="span8">
+            <h4>设计预览</h4>
+            <%= image_tag("#{@design.image}", :alt => "#{@design.title}",class:"img-rounded") %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="span3">
-      <%= render partial: "shared/user_side",locals:{user:@user} %>
+      <div class="span3">
+        <%= render partial: "shared/user_side",locals:{user:@user} %>
+      </div>
     </div>
   </div>
-</div>
 

@@ -1,22 +1,20 @@
-<div class="container-fluid">
   <div class="row-fluid">
 
       <div class="span12">
       <%= render partial:"shared/category_list",locals:{categorys:@categorys,current_category:@category} %>
+  <div class="well">
+    <h2>按照标签筛选</h2>
+    <% @tags.each do |tag| %>
+      <%= link_to tag,class:"btn" do %>
+      <i class="icon-tag"></i>  <%= "#{tag.name}" %>
+  <% end %>
+  <% end %>
+    <%= link_to '/tags/others',class:"btn" do %>
+     <i class="icon-tag"></i>   未指定标签
+   <% end %>
+  </div>
       <%= render partial:"shared/content",locals:{designs:@designs} %>
     </div> <!-- end of div class="span12" -->
 
   </div>
-</div>
-  <script type="text/javascript">
-
-var $container = $('#main');
-$container.imagesLoaded(function(){
-  $container.masonry({
-    itemSelector : '.item',
-    columnWidth : 295
-  });
-});
-
-  </script>
-
+  <%= render "shared/flow_script" %>

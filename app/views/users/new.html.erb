@@ -1,6 +1,6 @@
 <%= error_messages_for(@user) %>
 <div id="row-fluid">
-  <div class="span12 offset6">
+  <div class="span4 offset6">
     <h1>注册</h1>
     <%= form_for(@user) do |f| %>
       <%= render partial:"shared/user_form", locals:{f:f} %>

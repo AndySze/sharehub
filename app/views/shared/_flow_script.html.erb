@@ -1,0 +1,12 @@
+<!--用来实现图片列表自动排列 -->
+<script type="text/javascript">
+
+var $container = $('#main');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 295
+  });
+});
+
+</script>

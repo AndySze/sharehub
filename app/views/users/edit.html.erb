@@ -3,8 +3,10 @@
   <div class="span12 offset6">
     <h1>修改帐号</h1>
     <%= form_for(@user) do |f| %>
+      <div class="span4">
       <%= render partial:"shared/user_form", locals:{f:f} %>
-    <%= f.submit "更新用户",class:"btn btn-large btn-primary" %>
+    <%= f.submit "更新用户",class:"btn btn-large btn-block btn-primary" %>
+  </div>
   <% end %>
   </div>
 </div>

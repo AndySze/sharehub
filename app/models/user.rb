@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :designs,:through => :collections, :dependent => :destroy
   has_many :collections, :dependent => :destroy
+  has_many :tags,:through => :designs
 
   before_save :create_hashed_password
   after_save :clear_password,:create_default_collection

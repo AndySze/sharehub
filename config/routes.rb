@@ -1,8 +1,6 @@
 Sharehub::Application.routes.draw do
 
 
-
-
   resources :sessions, only: [:new,:create,:destroy]
   match "/signin" => "sessions#new"
   match "/logout" => "sessions#destroy"
@@ -21,6 +19,7 @@ Sharehub::Application.routes.draw do
 
 
   resources :categorys, only:[:show]
+  resources :tags, only:[:show]
 
   resources :static_page, only:[:about,:help,:contact]
 

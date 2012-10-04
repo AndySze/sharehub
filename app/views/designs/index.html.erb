@@ -1,4 +1,3 @@
-<div class="container-fluid">
   <div class="row-fluid">
 
     <% if @user %>
@@ -17,30 +16,32 @@
 
       <div class="well">
         <h2>按照分类目录筛选</h2>
-      <% @categorys.each do |category| %>
-
-        <%= link_to "#{category.name}",category,class:"btn" %>
+        <% @categorys.each do |category| %>
+          <%= link_to category,class:"btn" do %>
+          <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+      <% end %>
+        <% end %>
+        <%= link_to 'categorys/others',class:"btn" do %>
+        <i class="icon-folder-open"></i>   <%= "其它设计" %>
     <% end %>
-
-      <%= link_to "其它设计",'categorys/others',class:"btn" %>
-    </div>
+      </div>
 
 
+      <div class="well">
+        <h2>按照标签筛选</h2>
+        <% @tags.each do |tag| %>
+          <%= link_to tag,class:"btn" do %>
+          <i class="icon-tag"></i>   <%= "#{tag.name}" %>
+      <% end %>
+        <% end %>
+        <%= link_to 'tags/others',class:"btn" do %>
+        <i class="icon-tag"></i>   未指定标签
+      <% end %>
+      </div>
 
-    <%= render partial:"shared/content",locals:{designs:@designs} %>
-  </div> <!-- end of div class="span12" -->
-<% end %> <!-- end of Line4 if -->
+      <%= render partial:"shared/content",locals:{designs:@designs} %>
+    </div> <!-- end of div class="span12" -->
+  <% end %> <!-- end of Line4 if -->
 
-</div>
-</div>
-<script type="text/javascript">
-
-var $container = $('#main');
-$container.imagesLoaded(function(){
-  $container.masonry({
-    itemSelector : '.item',
-    columnWidth : 295
-  });
-});
-
-</script>
+  </div>
+  <%= render "shared/flow_script" %>
