@@ -14,15 +14,15 @@ class UsersController < ApplicationController
   end
 
   def create
-      @user = User.create(params[:user]) unless params[:password] != params[:confirm_password]
-      if @user.save
-        session[:user_id] = @user.id
-        session[:user_name] = @user.name
-        redirect_to @user
-      else
-        #redirect_to :back
-        render :new
-      end
+    @user = User.create(params[:user])
+    if @user.save
+      session[:user_id] = @user.id
+      session[:user_name] = @user.name
+      redirect_to @user
+    else
+      #redirect_to :back
+      render :new
+    end
   end
 
   def show
@@ -36,16 +36,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if params[:password] == params[:confirm_password]
-      if @user.update_attributes(params[:user])
-        flash[:success] ="Welcome to ShareHub!"
-        redirect_to @user
-      else
-        render :back
-      end
+    if @user.update_attributes(params[:user])
+      flash[:success] ="Welcome to ShareHub!"
+      redirect_to @user
     else
-      flash[:error] = "password not match!"
-      return false
+      render :back
     end
   end
 

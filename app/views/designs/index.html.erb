@@ -15,7 +15,7 @@
       <div class="span12">
 
       <div class="well">
-        <h2>按照分类目录筛选</h2>
+        <h4>按照分类目录筛选</h4>
         <% @categorys.each do |category| %>
           <%= link_to category,class:"btn" do %>
           <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
@@ -28,7 +28,7 @@
 
 
       <div class="well">
-        <h2>按照标签筛选</h2>
+        <h4>按照标签筛选</h4>
         <% @tags.each do |tag| %>
           <%= link_to tag,class:"btn" do %>
           <i class="icon-tag"></i>   <%= "#{tag.name}" %>

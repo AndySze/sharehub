@@ -1,7 +1,7 @@
 <% if object && object.errors.size > 0 %>
   <div id="alert alert-error">
-    <h2><%= pluralize(object.errors.size, "error") %> prohibited this record from being saved</h2>
-    <p>There were problems with the following fields:</p>
+    <h4><%= object.errors.size %> 个错误信息！</h4>
+    <p>以下栏目存在错误信息:</p>
     <ul>
       <% object.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

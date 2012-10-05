@@ -18,6 +18,10 @@
   <%= "session[:#{k}] : #{v}" %><br>
   <% end %>
 
+<% flash.each do |k,v| %>
+  <%= "flash[:#{k}] : #{v}" %><br>
+  <% end %>
+
 <%= debug(params) if Rails.env.development? %>
 <% unless session[:user_name] %>
   <!-- Login Modal -->

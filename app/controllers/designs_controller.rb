@@ -41,7 +41,7 @@ class DesignsController < ApplicationController
     if @design.update_attributes(params[:design])
       redirect_to @design
     else
-      redirect_to :back
+      render :edit
     end
   end
 

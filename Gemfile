@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.8'
 
@@ -7,6 +7,12 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 gem 'thin'
+
+#attachment management
+
+gem 'carrierwave'
+gem 'rmagick'
+gem 'mime-types'
 
 # Gems used only for assets and not required
 # in production environments by default.

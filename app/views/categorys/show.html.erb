@@ -3,7 +3,7 @@
       <div class="span12">
       <%= render partial:"shared/category_list",locals:{categorys:@categorys,current_category:@category} %>
   <div class="well">
-    <h2>按照标签筛选</h2>
+    <h4>按照标签筛选</h4>
     <% @tags.each do |tag| %>
       <%= link_to tag,class:"btn" do %>
       <i class="icon-tag"></i>  <%= "#{tag.name}" %>

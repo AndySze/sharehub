@@ -1,11 +1,12 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :user_type, :password, :confirm_password
+  attr_accessible :email, :name, :user_type, :password, :password_confirmation
 
   validates :name,:presence => true,:uniqueness => true
   validates :email,:format => {:with => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i},
             :confirmation => true, :presence => true
-  validates :password, :length => {minimum: 6} ,:on => :create
+  validates :password, :length => {minimum: 6} ,
+            :confirmation => true,:on => :create
   validates :user_type, :presence => true
 
   has_many :designs,:through => :collections, :dependent => :destroy
@@ -15,7 +16,8 @@ class User < ActiveRecord::Base
   before_save :create_hashed_password
   after_save :clear_password,:create_default_collection
 
-  attr_accessor :password, :confirm_password
+  attr_accessor :password,:password_confirmation, :confirm_password
+  #confirm_password 变量已经没有用处，但删除后报错。
 
   attr_protected :hashed_password, :salt
 
@@ -44,12 +46,8 @@ class User < ActiveRecord::Base
 
   def create_hashed_password
     unless password.blank?
-      if password == confirm_password
-        self.salt = User.make_salt(name) if salt.blank?
-        self.hashed_password = User.hash_with_salt(password, salt)
-      else
-        return false
-      end
+      self.salt = User.make_salt(name) if salt.blank?
+      self.hashed_password = User.hash_with_salt(password, salt)
     end
   end
 
@@ -62,3 +60,4 @@ class User < ActiveRecord::Base
   end
 
 end
+
