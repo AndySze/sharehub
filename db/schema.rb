@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003072341) do
+ActiveRecord::Schema.define(:version => 20121005112034) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,8 +26,14 @@ ActiveRecord::Schema.define(:version => 20121003072341) do
     t.datetime "updated_at", :null => false
   end
 
-# Could not dump table "designs" because of following StandardError
-#   Unknown type 'iteger' for column 'user_id'
+  create_table "designs", :force => true do |t|
+    t.string   "title"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "designs", ["title"], :name => "index_designs_on_title"
 
   create_table "designs_tags", :id => false, :force => true do |t|
     t.integer "design_id"

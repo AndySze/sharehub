@@ -6,7 +6,7 @@
       </div>
       <div class="container-fluid">
         <h4><%= @design.title %></h4>
-        <% if session[:user_id]==@design.user_id %>
+        <% if session[:user_id]==User.find(Collection.find(@design.collection_id).user_id).name %>
           <%= link_to("编辑该设计的属性",{:action => 'edit',:id => @design.id} ) %>
       <% end %>
         <div class="design-display">

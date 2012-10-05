@@ -1,5 +1,5 @@
 class Design < ActiveRecord::Base
-  attr_accessible :image, :title, :user_id, :collection_id, :category_id,:tag_ids
+  attr_accessible :image, :title,  :collection_id, :category_id,:tag_ids
 
   mount_uploader :image, DesignUploader
 
@@ -9,4 +9,12 @@ class Design < ActiveRecord::Base
 
   belongs_to :collections
   has_and_belongs_to_many :tags
+
+
+  def design_user_name
+    @c = Collection.find(self.collection_id)
+    @u = User.find(@c.user_id)
+    return @u.name
+  end
+
 end

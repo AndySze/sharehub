@@ -31,6 +31,8 @@ class DesignUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+   process :resize_to_limit => [800, nil]
+
    version :thumb do
      process :resize_to_fill => [50, 50]
    end

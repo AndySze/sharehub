@@ -5,28 +5,34 @@
       <h2><%= @user.email %></h2>
       <%= error_messages_for(@design) %>
       <% if @user.name == session[:user_name] %>
-      <div id="upload_design">
+        <div id="upload_design">
 
-        <%= form_for [@user,@design] do |f| %>
+        <%= form_for [@user,@design],:html => {:multitype => true } do |f| %>
           <%= render 'shared/error_messages',object: f.object %>
-          <%= f.label :title,"设计标题" %>
-          <%= f.text_field :title %>
-          <%= f.label :image,"图片地址" %>
-          <%= f.text_field :image %>
-          <%= f.label :collection_id,"所属专辑" %>
-          <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]} %>
-          <!-- Link to trigger modal -->
-          <p><a href="#newCollection" role="button" class="" data-toggle="modal">新建专辑</a></p>
-          <%= f.label :category_id,"请选择分类目录" %>
-          <%= f.select :category_id,Category.all.collect{|s| [s.name,s.id]},{:include_blank => true} %><br>
-          <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
-        <% end %>
+        <%= f.label :title,"设计标题" %>
+        <%= f.text_field :title %>
+        <%= f.label :image,"图片地址" %>
+        <%= f.file_field :image %>
+        <%= f.label :collection_id,"所属专辑" %>
+        <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]} %>
+        <!-- Link to trigger modal -->
+        <p><a href="#newCollection" role="button" class="" data-toggle="modal">新建专辑</a></p>
+        <%= f.label :category_id,"请选择分类目录" %>
+        <%= f.select :category_id,Category.all.collect{|s| [s.name,s.id]},{:include_blank => true} %><br>
+        <%= f.label :tag_id,"设置标签" %>
+        <% Tag.all.each do |tag| %>
+          <%= check_box_tag "design[tag_ids][]",tag.id,@design.tags.include?(tag) %>
+        <%= tag.name %>
+      <% end %>
+        <br>
+        <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
+      <% end %>
       </div>
     <% end %>
     </div>
     <div class="span3">
       <%= render partial:"shared/user_side",locals:{:user => @user} %>
-      </div>
+    </div>
   </div>
 </div>
 
@@ -40,11 +46,11 @@
   <div class="modal-body">
 
     <% if @user.name == session[:user_name] %>
-    <%= form_for [@user,@collection] do |f| %>
+      <%= form_for [@user,@collection] do |f| %>
       <%= f.label :name,"专辑名称" %>
-      <%= f.text_field :name %>
-      <%= f.submit "保存" %>
-    <% end %>
+    <%= f.text_field :name %>
+    <%= f.submit "保存" %>
+  <% end %>
   <% end %>
 
   </div>
