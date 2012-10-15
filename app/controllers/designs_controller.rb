@@ -1,5 +1,11 @@
 class DesignsController < ApplicationController
 
+  before_filter :get_design, :only => [:edit,:show, :update ]
+
+  def get_design
+    @design = Design.find(params[:id])
+  end
+
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
@@ -23,21 +29,21 @@ class DesignsController < ApplicationController
   end
 
   def show
-    @design = Design.find(params[:id])
     @collection = Collection.find(@design.collection_id)
     @user = User.find(@collection.user_id)
+    @current_user = User.find(session[:user_id]) if session[:user_id]
     @category = Category.find(@design.category_id) if @design.category_id
   end
 
   def edit
-    @design = Design.find(params[:id])
-    @user = User.find(@design.user_id)
+    @collection = Collection.find(@design.collection_id)
+    @user = User.find(@collection.user_id)
   end
 
   def update
     params[:design][:tag_ids] ||= []
-    @design = Design.find(params[:id])
-    @user = User.find(@design.user_id)
+    @collection = Collection.find(@design.collection_id)
+    @user = User.find(@collection.user_id)
     if @design.update_attributes(params[:design])
       redirect_to @design
     else

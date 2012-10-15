@@ -1,5 +1,11 @@
 class CollectionsController < ApplicationController
 
+  before_filter :get_colletction, :only => [:show, :update ]
+
+  def get_collection
+    @collection = Collection.find(params[:id])
+  end
+
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
@@ -22,7 +28,6 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    @collection = Collection.find(params[:id])
     @current_user = User.find(@collection.user_id)
     if @collection.update_attributes(params[:collection])
       flash[:success] = "Collection Saved!"
@@ -33,7 +38,6 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.find(params[:id])
     @user = User.find(@collection.user_id)
     if @user.name == session[:user_name]
       @design = @user.designs.build

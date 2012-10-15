@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 
   attr_protected :hashed_password, :salt
 
+
   def self.make_salt(name="")
     Digest::SHA1.hexdigest("User #{name} #{Time.now} to make salt")
   end

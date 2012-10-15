@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(:version => 20121005112034) do
   create_table "designs", :force => true do |t|
     t.string   "title"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "collection_id"
+    t.integer  "category_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "designs", ["title"], :name => "index_designs_on_title"

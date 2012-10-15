@@ -7,14 +7,8 @@ class Design < ActiveRecord::Base
   validates :image,:presence => true
   validates :collection_id,:presence => true
 
-  belongs_to :collections
+  belongs_to :collection
   has_and_belongs_to_many :tags
 
-
-  def design_user_name
-    @c = Collection.find(self.collection_id)
-    @u = User.find(@c.user_id)
-    return @u.name
-  end
 
 end

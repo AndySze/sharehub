@@ -4,6 +4,6 @@ class Collection < ActiveRecord::Base
   validates :name,presence:true
   validates_uniqueness_of :name,:scope => :user_id
   has_many :designs, :dependent => :destroy
-  belongs_to :users
+  belongs_to :user
 
 end

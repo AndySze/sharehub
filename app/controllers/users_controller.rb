@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  before_filter :get_user, :only => [:edit,:show, :update ]
+
+  def get_user
+    @user = User.find(params[:id])
+  end
 
   def new
     @user = User.new
@@ -10,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
@@ -26,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     if @user.name == session[:user_name]
       @design = @user.designs.build
       @collection = @user.collections.build
@@ -35,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] ="Welcome to ShareHub!"
       redirect_to @user
