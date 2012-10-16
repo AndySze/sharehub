@@ -1,12 +1,14 @@
 <%= error_messages_for(@user) %>
-<div id="row-fluid">
-  <div class="span4 offset6">
+<div id="row">
+  <div class="span6 offset3">
+    <div class="well">
     <h1>注册</h1>
     <%= form_for(@user) do |f| %>
       <%= render partial:"shared/user_form", locals:{f:f} %>
     <%= f.submit "创建用户",class:"btn btn-large btn-primary" %>
   <% end %>
   <%= link_to "已经有帐号了？立即登录",signin_path %>
+</div>
   </div>
 </div>
 

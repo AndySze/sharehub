@@ -1,9 +1,13 @@
 @import 'bootstrap';
 
 .item {
-  width: 275px;
-  margin: 10px;
+  width: 220px;
+  margin: 5px;
   float: left;
+}
+
+.thumbnails {
+  margin-left: -5px;
 }
 
 footer {

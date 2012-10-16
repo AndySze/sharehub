@@ -1,17 +1,17 @@
-<div class="container-fluid">
-  <div class="row-fluid">
+<div class="container">
+  <div class="row">
     <div class="span9">
       <div class="page-header">
         <h1>编辑设计
         </div>
-        <div id="update_design" class="container-fluid">
+        <div id="update_design" class="container">
           <div class="span4">
             <%= form_for (@design),:html => {:multitype => true } do |f| %>
               <%= render 'shared/error_messages',object: f.object %>
-            <%= f.label :title,"设计标题" %>
-            <%= f.text_field :title %>
             <%= f.label :image,"图片地址" %>
             <%= f.text_field :image %>
+            <%= f.label :title,"设计标题" %>
+            <%= f.text_field :title %>
             <%= f.file_field :image %>
             <%= f.label :collection_id,"所属专辑" %>
             <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true} %>

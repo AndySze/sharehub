@@ -6,10 +6,10 @@
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background-image: url(http://subtlepatterns.com/patterns/wall4.png); background-position: initial initial; background-repeat: initial initial; ">
 
 <%= render "layouts/header" %>
-<div class="container-fluid">
+<div class="container">
   <%= yield %>
 </div>
 <%= render "layouts/footer" %>
@@ -47,22 +47,6 @@
   </div>
 </div>
 
-<!-- Signup Modal -->
-<div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block; ">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">注册</h3>
-  </div>
-  <div class="modal-body">
-
-    <%= form_for(User.new) do |f| %>
-      <%= render partial:"shared/user_form", locals:{f:f} %>
-    <%= f.submit "创建用户",class:"btn btn-large btn-primary" %>
-  <% end %>
-    <%= link_to "已经有帐号了？立即登录",signin_path %>
-
-  </div>
-</div>
 
 <% end %>
 

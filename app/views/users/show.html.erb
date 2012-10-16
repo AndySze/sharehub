@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row-fluid">
+<div class="container">
+  <div class="row">
     <div class="span9">
       <h1><%= @user.name %></h1>
       <h2><%= @user.email %></h2>
@@ -9,10 +9,10 @@
 
         <%= form_for [@user,@design],:html => {:multitype => true } do |f| %>
           <%= render 'shared/error_messages',object: f.object %>
-        <%= f.label :title,"设计标题" %>
-        <%= f.text_field :title %>
         <%= f.label :image,"图片地址" %>
         <%= f.file_field :image %>
+        <%= f.label :title,"设计标题" %>
+        <%= f.text_field :title %>
         <%= f.label :collection_id,"所属专辑" %>
         <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]} %>
         <!-- Link to trigger modal -->

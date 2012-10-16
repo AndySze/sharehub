@@ -1,12 +1,11 @@
-
-<h1>Designs#index</h1>
+<h1>最新上传的设计</h1>
 <ul class="thumbnails" >
   <div id="main">
     <% designs.each do |design| %>
       <li class="item">
     <div class="thumbnail">
       <%= link_to :controller => 'designs', :action => 'show',:id => design.id do %>
-        <%= image_tag("#{design.image}",:alt => "#{design.title}", class:"img-rounded") %>
+        <%= image_tag("#{design.image.thumb}",:alt => "#{design.title}", class:"img-rounded") %>
       <h3> <%= "#{design.title}" %></h3>
     <% end %>
     </div>
