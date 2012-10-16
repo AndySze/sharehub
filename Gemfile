@@ -11,12 +11,12 @@ group :development do
 end
 
 group :production do
-  gem mysql2
+  gem 'mysql2'
 end
 #attachment management
 
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'mime-types'
 
 # Gems used only for assets and not required
