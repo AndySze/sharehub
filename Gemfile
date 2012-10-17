@@ -12,10 +12,13 @@ end
 
 group :production do
   gem 'mysql2'
+  gem 'unicorn'
 end
 #attachment management
 
 gem 'carrierwave'
+gem 'rest-client'
+gem 'carrierwave-aliyun'
 gem 'mini_magick'
 gem 'mime-types'
 
@@ -33,6 +36,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
