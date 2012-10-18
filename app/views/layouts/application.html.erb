@@ -19,13 +19,11 @@
   <%= "session[:#{k}] : #{v}" %><br>
   <% end %>
 
-<% flash.each do |k,v| %>
-  <%= "flash[:#{k}] : #{v}" %><br>
+  <% flash.each do |k,v| %>
+    <%= "flash[:#{k}] : #{v}" %><br>
   <% end %>
 
-<%= debug(params) %>
-<% unless session[:user_name] %>
-<% end %>
+  <%= debug(params) %>
 <% end %>
 
 <!-- Login Modal -->
