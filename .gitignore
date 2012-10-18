@@ -17,3 +17,7 @@
 
 # Ignore the image files.
 /public/design
+
+# Ignore the vagrant files.
+/Vagrantfile
+/.vagrant
