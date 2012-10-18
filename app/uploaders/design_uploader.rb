@@ -10,7 +10,7 @@ class DesignUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   #storage :file
-  #storage :fog
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -51,6 +51,13 @@ class DesignUploader < CarrierWave::Uploader::Base
        @name = Digest::MD5.hexdigest(File.dirname(current_path))
        "#{@name}.#{file.extension.downcase}"
      end
-   end
+
+  # https://github.com/jnicklas/carrierwave/wiki
+  # Heroku has a read-only filesystem, so uploads must be stored on S3 and cannot be cached in the public
+  # directory. You can work around the caching limitation by setting the cache_dir in your Uploader classes
+  # to the tmp directory.
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end  end
 
 end
