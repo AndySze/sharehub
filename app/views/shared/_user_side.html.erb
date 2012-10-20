@@ -2,27 +2,38 @@
   <h4><%= user.name %></h4>
   <p><%= user.email %></p>
   <hr>
+  <%= link_to "上传新设计", user, class:"btn btn-block btn-success btn-large" %>
+  <hr>
   <ul class="nav nav-tabs nav-stacked">
-    <li><%= link_to "#{user.collections.count}个专辑",user_collections_path(user) %></li>
-    <li><%= link_to "#{user.designs.count}个上传",user_designs_path(user) %></li>
-    <li><%= link_to "20个设计","#" %></li>
+    <li>
+    <%= link_to user_collections_path(user) do %>
+    <i class="icon-folder-close"></i>
+    <%= "#{user.collections.count}个专辑" %>
+  <% end %>
+    </li>
+    <li><%= link_to user_designs_path(user) do %>
+    <i class="icon-upload"></i>
+    <%= "#{user.designs.count}个上传" %>
+  <% end %>
+    </li>
   </ul>
   <h5>TA的标签</h5>
   <ul class="nav nav-tabs nav-stacked">
     <% user.tags.uniq.each do |tag| %>
-    <li><%= link_to tag do %>
+      <li><%= link_to tag do %>
     <i class="icon-tag"></i> <%= "#{tag.name}" %>
-  <% end %>
+<% end %>
     </li>
   <% end %>
   </ul>
   <h5>我关注的人</h5>
+  <% if Design.any? %>
   <h5>发现</h5>
-      <div class="thumbnail">
-        <%= link_to '#' do %>
-        <%= image_tag("/images/explore.jpg",:alt => "explore", class:"img-rounded") %>
-        <h3>发现</h3>
-      <% end %>
-            <p>balabalbala</p>
-          </div>
+  <div class="thumbnail">
+    <%= link_to '' do %>
+      <%= image_tag(Design.all.sample.image.thumb,:alt => "explore", class:"img-rounded") %>
+    <h3>发现</h3>
+  <% end %>
+  </div>
+<% end %>
 </div>

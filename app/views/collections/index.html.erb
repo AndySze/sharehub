@@ -1,10 +1,29 @@
 <div class="container">
   <div class="row">
+    <div class="page-header">
+      <h2><%= @user.name %>的专辑</h2>
+    </div>
     <% if @collections  %>
-    <% @collections.each do |collection| %>
-      <%= collection.name %>
-      <%= collection.user_id %>
-    <% end %>
+      <% @collections.each do |collection| %>
+      <div class="category">
+      <h4><%= link_to collection.name, collection_path(collection) %></h4>
+        <% if collection.designs.count < 1 %>
+          <p>该专辑还没有上传设计</p>
+        <% end %>
+      <ul class="thumbnails">
+      <% collection.designs.limit(4).each do |design| %>
+        <li class="span3">
+        <div class="thumbnail">
+          <%= link_to :controller => 'designs', :action => 'show',:id => design.id do %>
+            <%= image_tag("#{design.image.thumb}",:alt => "#{design.title}", class:"img-rounded") %>
+          <h5> <%= "#{design.title}" %></h5>
+        <% end %> <!-- end of link_to -->
+        </div> <!-- end of div thumbnail -->
+        </li>
+    <% end %><!-- end of collection.designs.each -->
+  </ul>
+    </div><!-- end of div category -->
+  <% end %>
   <% end %>
   </div>
 </div>

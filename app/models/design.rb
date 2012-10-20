@@ -3,12 +3,13 @@ class Design < ActiveRecord::Base
 
   mount_uploader :image, DesignUploader
 
-  validates :title,:presence => true,:length => {maximum:100}
-  validates :image,:presence => true
-  validates :collection_id,:presence => true
+  validates :title,:presence => true,:length => {maximum:100},on: :update
+  validates :image,:presence => true,on: :create
+  validates :collection_id,:presence => true, on: :update
 
   belongs_to :collection
   has_and_belongs_to_many :tags
+
 
 
 end

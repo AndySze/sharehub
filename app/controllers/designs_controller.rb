@@ -2,6 +2,7 @@ class DesignsController < ApplicationController
 
   before_filter :get_design, :only => [:edit,:show, :update ]
 
+
   def get_design
     @design = Design.find(params[:id])
   end
@@ -22,7 +23,7 @@ class DesignsController < ApplicationController
     @current_user = User.find(session[:user_id])
     @design = @current_user.designs.build(params[:design])
     if @design.save
-      redirect_to @design
+      redirect_to edit_design_path(@design)
     else
       redirect_to :back
     end
@@ -49,6 +50,16 @@ class DesignsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @design = Design.find(params[:id])
+    @design.remove_image!
+    @design.destroy
+
+    @current_user = User.find(session[:user_id])
+    redirect_to user_designs_path(@current_user)
+
   end
 
 end

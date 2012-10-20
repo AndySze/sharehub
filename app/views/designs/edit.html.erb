@@ -8,11 +8,8 @@
           <div class="span4">
             <%= form_for (@design),:html => {:multitype => true } do |f| %>
               <%= render 'shared/error_messages',object: f.object %>
-            <%= f.label :image,"图片地址" %>
-            <%= f.text_field :image %>
             <%= f.label :title,"设计标题" %>
             <%= f.text_field :title %>
-            <%= f.file_field :image %>
             <%= f.label :collection_id,"所属专辑" %>
             <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true} %>
             <%= f.label :collection_id,"所属分类" %>
@@ -23,7 +20,10 @@
             <%= tag.name %>
           <% end %>
           <br>
-            <%= f.submit "更新设计",class:"btn btn-large btn-primary" %>
+          <%= f.submit "更新设计",class:"btn btn-large btn-primary" %>
+          <%= link_to "删除此设计",@design,confirm:"确定删除次设计",method: :delete %>
+            <h5>更换设计图片</h5>
+            <%= f.file_field :image %>
         <% end %>
           </div>
           <div class="span8">

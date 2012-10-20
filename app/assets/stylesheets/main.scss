@@ -1,5 +1,8 @@
 @import 'bootstrap';
 
+.navbar {
+  color: $blue;
+}
 .item {
   width: 220px;
   margin: 5px;
@@ -8,6 +11,13 @@
 
 .thumbnails {
   margin-left: -5px;
+}
+
+.category {
+  border:1px solid $grayLight;
+  border-top-width:5px;
+  border-top-color:$green;
+  margin:10px 0;
 }
 
 footer {

@@ -9,21 +9,11 @@
 
         <%= form_for [@user,@design],:html => {:multitype => true } do |f| %>
           <%= render 'shared/error_messages',object: f.object %>
-        <%= f.label :image,"图片地址" %>
+        <%= f.label :image,"选择设计图片" %>
         <%= f.file_field :image %>
-        <%= f.label :title,"设计标题" %>
-        <%= f.text_field :title %>
         <%= f.label :collection_id,"所属专辑" %>
         <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]} %>
         <!-- Link to trigger modal -->
-        <p><a href="#newCollection" role="button" class="" data-toggle="modal">新建专辑</a></p>
-        <%= f.label :category_id,"请选择分类目录" %>
-        <%= f.select :category_id,Category.all.collect{|s| [s.name,s.id]},{:include_blank => true} %><br>
-        <%= f.label :tag_id,"设置标签" %>
-        <% Tag.all.each do |tag| %>
-          <%= check_box_tag "design[tag_ids][]",tag.id,@design.tags.include?(tag) %>
-        <%= tag.name %>
-      <% end %>
         <br>
         <%= f.submit "上传设计",class:"btn btn-large btn-primary" %>
       <% end %>

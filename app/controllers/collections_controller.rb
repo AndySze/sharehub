@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
 
-  before_filter :get_colletction, :only => [:show, :update ]
+  before_filter :get_collection, :only => [:show, :update ]
 
   def get_collection
     @collection = Collection.find(params[:id])

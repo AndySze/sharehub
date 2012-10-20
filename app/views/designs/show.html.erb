@@ -7,7 +7,7 @@
       <div class="container">
         <h4><%= @design.title %></h4>
         <% if @current_user && @current_user.collection_ids.include?(@design.collection_id) %>
-          <%= link_to("编辑该设计的属性",{:action => 'edit',:id => @design.id} ) %>
+          <%= link_to("编辑该设计的属性",edit_design_path(@design) ) %>
       <% end %>
         <div class="design-display">
           <%= image_tag("#{@design.image}",alt:"#{@design.title}") %>
