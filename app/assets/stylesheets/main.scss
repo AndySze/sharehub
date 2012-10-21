@@ -1,7 +1,10 @@
 @import 'bootstrap';
 
 .navbar {
-  color: $blue;
+
+  .container {
+    width:940px;
+  }
 }
 .item {
   width: 220px;
