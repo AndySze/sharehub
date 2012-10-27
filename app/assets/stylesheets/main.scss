@@ -1,3 +1,8 @@
+$navbarBackground: #45bf55;
+$navbarBackgroundHighlight: #267f01;
+$navbarLinkColor: #39433a;
+$navbarLinkColorHover: #ffffff;
+
 @import 'bootstrap';
 
 .navbar {
@@ -5,7 +10,21 @@
   .container {
     width:940px;
   }
+
+  .nav {
+    margin-top: 30px;
+
 }
+    .navbar-inner {
+      .container {
+        h1 {
+          margin-top: 70px; 
+          color:#ffffff;
+}  
+}
+}
+}
+
 .item {
   width: 220px;
   margin: 5px;

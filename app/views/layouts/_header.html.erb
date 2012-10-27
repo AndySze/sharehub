@@ -1,12 +1,10 @@
-<div class="navbar navbar ">
+<div class="navbar ">
   <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" >
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <%= link_to "淘灵感",root_url,class:"brand" %>
+    <div class="container clearfix">
+      <%= link_to root_url,class:"brand " do %>
+        <%= image_tag "/taolinggan_logo.png" %>
+      <% end %>
+      <h1>寻找灵感，产生创意，创建家居灵感集</h1>
 
       <% if session[:user_name] %>
         <div class="nav pull-right">
@@ -22,13 +20,11 @@
         </li>
       </div>
     <% else %>
-        <div class="nav pull-right">
-        <ul class="nav">
+        <ul class="nav pull-right">
           <!-- Link to trigger modal -->
           <li><%= link_to "注册",signup_path ,class:"navbar-text pull-right" %></li>
           <li><a href="#loginModal" role="button" class="navbar-text pull-right" data-toggle="modal">登录</a></li>
-        </ul>
-      </div>
+      </ul>
     <% end %>
         <ul class="nav">
           <li class="divider-vertical"><%= link_to "浏览设计",designs_path,class:"" %></li>
