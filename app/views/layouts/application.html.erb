@@ -54,11 +54,10 @@
 
 
 
-<script type="text/javascript">
-//$("#signupModel").modal()                       // initialized with defaults
-</script>
 
+<% if Rails.env.production? %>
 <%= render "shared/track_code" %>
+<% end %>
 
 </body>
 </html>
