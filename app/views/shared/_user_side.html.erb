@@ -30,8 +30,8 @@
   <% if Design.any? %>
   <h5>发现</h5>
   <div class="thumbnail">
-    <%= link_to '' do %>
-      <%= image_tag(Design.all.sample.image.thumb,:alt => "explore", class:"img-rounded") %>
+    <%= link_to design = Design.all.sample do %>
+      <%= image_tag(design.image.thumb,:alt => "explore", class:"img-rounded") %>
     <h3>发现</h3>
   <% end %>
   </div>

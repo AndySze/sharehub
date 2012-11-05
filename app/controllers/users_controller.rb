@@ -20,8 +20,6 @@ class UsersController < ApplicationController
   def create
     @user = User.create(params[:user])
     if @user.save
-      session[:user_id] = @user.id
-      session[:user_name] = @user.name
       redirect_to @user
     else
       #redirect_to :back
@@ -30,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @user.name == session[:user_name]
+    if  current_user
       @design = @user.designs.build
       @collection = @user.collections.build
     end

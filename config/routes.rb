@@ -1,9 +1,7 @@
 Sharehub::Application.routes.draw do
 
 
-  resources :sessions, only: [:new,:create,:destroy]
-  match "/signin" => "sessions#new"
-  match "/logout" => "sessions#destroy"
+  devise_for :users, :path => 'account'
 
   resources :users,:shallow => true do
     resources :collections
@@ -14,8 +12,6 @@ Sharehub::Application.routes.draw do
   resources :collections,:only => [:index]
   resources :designs,:only => [:index]
 
-
-  match "/signup" => "users#new"
 
 
   resources :categorys, only:[:show]

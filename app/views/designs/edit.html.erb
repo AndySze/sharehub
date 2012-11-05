@@ -1,3 +1,4 @@
+<% @page_title = " | 编辑设计信息" %>
 <div class="container">
   <div class="row">
     <div class="span9">
@@ -8,8 +9,8 @@
           <div class="span4">
             <%= form_for (@design),:html => {:multitype => true } do |f| %>
               <%= render 'shared/error_messages',object: f.object %>
-            <%= f.label :title,"设计标题" %>
-            <%= f.text_field :title %>
+            <%= f.label :title,"为什么喜欢这个设计？" %>
+            <%= f.text_area :title, rows: 3 %>
             <%= f.label :collection_id,"所属专辑" %>
             <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},{:include_blank => true} %>
             <%= f.label :collection_id,"所属分类" %>
@@ -21,13 +22,14 @@
           <% end %>
           <br>
           <%= f.submit "更新设计",class:"btn btn-large btn-primary" %>
-          <%= link_to "删除此设计",@design,confirm:"确定删除次设计",method: :delete %>
+          <%= link_to "取消修改",@design, class:"btn btn-large" %>
+          <%= link_to "删除此设计",@design,confirm:"确定删除此设计",method: :delete %>
             <h5>更换设计图片</h5>
             <%= f.file_field :image %>
         <% end %>
           </div>
-          <div class="span8">
-            <h4>设计预览</h4>
+          <div class="span4">
+            <p>设计预览</p>
             <%= image_tag("#{@design.image}", :alt => "#{@design.title}",class:"img-rounded") %>
           </div>
         </div>

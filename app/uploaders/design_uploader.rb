@@ -58,8 +58,8 @@ class DesignUploader < CarrierWave::Uploader::Base
   # Heroku has a read-only filesystem, so uploads must be stored on S3 and cannot be cached in the public
   # directory. You can work around the caching limitation by setting the cache_dir in your Uploader classes
   # to the tmp directory.
-  def cache_dir
-    "#{Rails.root}/tmp/uploads"
-  end
+  #def cache_dir
+  #  "#{Rails.root}/tmp/uploads"
+  #end
 end
 

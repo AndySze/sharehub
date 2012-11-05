@@ -1,18 +1,19 @@
+<% @page_title = " | #{@design.title}" %>
 <div class="container">
   <div class="row">
     <div class="span9">
       <div class="page-header">
-        <h1><%= @user.name %>的设计收藏</h1>
+        <h4><%= @user.name %>的设计收藏</h4>
       </div>
       <div class="container">
         <h4><%= @design.title %></h4>
-        <% if @current_user && @current_user.collection_ids.include?(@design.collection_id) %>
+        <% if current_user && current_user.collection_ids.include?(@design.collection_id) %>
           <%= link_to("编辑该设计的属性",edit_design_path(@design) ) %>
       <% end %>
         <div class="design-display">
           <%= image_tag("#{@design.image}",alt:"#{@design.title}") %>
         </div>
-        <h4>所在我的专辑</h4>
+        <h4>所在灵感集</h4>
         <div class="collection">
           <%= @collection.name %>
         <% if @current_user && @current_user.collection_ids.include?(@design.collection_id) %>
@@ -28,7 +29,7 @@
           <%= "其它分类" %>
         <% end %>
         </div>
-        <h4>此设计所属标签</h4>
+        <h4>所属标签</h4>
         <div class="tags">
           <% if @design.tags.any? %>
             <% @design.tags.each do |tag| %>

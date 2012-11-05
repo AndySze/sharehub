@@ -21,6 +21,8 @@ gem 'rest-client'
 gem 'carrierwave-aliyun'
 gem 'mini_magick'
 gem 'mime-types'
+gem 'devise'
+gem 'jquery-fileupload-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
