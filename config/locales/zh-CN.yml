@@ -206,7 +206,7 @@ zh-CN:
     attributes:
       user:
         name: "用户名"
-        email: "Email"
+        email: "Email(电子邮箱)"
         password: "密码"
         password_confirmation: "确认密码"
         user_type: "我的身份"
