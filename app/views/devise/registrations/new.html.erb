@@ -14,6 +14,11 @@
 
   <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
+    <%= f.label :user_type,"我的身份" %>
+<p><%= f.radio_button(:user_type,"2",:checked => false) %>  我是设计师，我想分享设计，传播我的思想。</p>
+<p><%= f.radio_button(:user_type,"1",:checked => false) %>  家居爱好者，不是设计师，但我喜欢收藏精美的家居设计。</p>
+<p><%= f.radio_button(:user_type,"0",:checked => false) %>  以上都不是，随便看看。</p>
+
 
   <div><%= f.submit "注册",class:"btn btn-large btn-success" %></div>
 <% end %>
