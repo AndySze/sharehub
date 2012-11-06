@@ -9,6 +9,10 @@ class StaticPageController < ApplicationController
   def contact
   end
 
-
+  def index
+    @categorys = Category.all
+    @tags = Tag.all
+    @designs = Design.order("created_at DESC")
+  end
 
 end

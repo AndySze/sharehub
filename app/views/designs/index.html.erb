@@ -1,9 +1,9 @@
 <% @page_title = " | 寻找灵感，产生创意，创建家居灵感集" %>
   <div class="row">
 
-    <% if @user %>
       <div class="span9">
 
+        <h3><%= @user.name %>的最新上传的设计</h3>
       <%= render partial:"shared/content",locals:{designs:@designs} %>
 
     </div> <!-- end of div class="span9" -->
@@ -12,37 +12,6 @@
       <%= render partial:"shared/user_side",locals:{user:@user} %>
     </div><!-- end of div class="span3" -->
 
-  <% else %>
-      <div class="span12">
-
-      <div class="well">
-        <h4>按照分类目录筛选</h4>
-        <% @categorys.each do |category| %>
-          <%= link_to category,class:"btn" do %>
-          <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
-      <% end %>
-        <% end %>
-        <%= link_to 'categorys/others',class:"btn" do %>
-        <i class="icon-folder-open"></i>   <%= "其它设计" %>
-    <% end %>
-      </div>
-
-
-      <div class="well">
-        <h4>按照标签筛选</h4>
-        <% @tags.each do |tag| %>
-          <%= link_to tag,class:"btn" do %>
-          <i class="icon-tag"></i>   <%= "#{tag.name}" %>
-      <% end %>
-        <% end %>
-        <%= link_to 'tags/others',class:"btn" do %>
-        <i class="icon-tag"></i>   未指定标签
-      <% end %>
-      </div>
-
-      <%= render partial:"shared/content",locals:{designs:@designs} %>
-    </div> <!-- end of div class="span12" -->
-  <% end %> <!-- end of Line4 if -->
 
   </div>
   <%= render "shared/flow_script" %>

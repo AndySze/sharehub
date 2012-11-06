@@ -7,11 +7,7 @@ Sharehub::Application.routes.draw do
     resources :collections
     resources :designs
   end
-  root :to => "designs#index"
-
-  resources :designs,:only => [:index]
-
-
+  root :to => "static_page#index"
 
   resources :categorys, only:[:show]
   resources :tags, only:[:show]
