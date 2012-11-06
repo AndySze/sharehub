@@ -16,11 +16,10 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @current_user = User.find(session[:user_id])
-    @collection = @current_user.collections.build(params[:collection])
+    @collection = current_user.collections.build(params[:collection])
     if @collection.save
       flash[:success] = "Collection Saved!"
-      redirect_to @current_user
+      redirect_to :back
     else
       redirect_to :back
     end
@@ -39,7 +38,7 @@ class CollectionsController < ApplicationController
 
   def show
     @user = User.find(@collection.user_id)
-    if @user.name == session[:user_name]
+    if current_user
       @design = @user.designs.build
       @newcollection = @user.collections.build
     end

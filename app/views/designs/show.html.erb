@@ -6,7 +6,7 @@
         <h4><%= @user.name %>的设计收藏</h4>
       </div>
       <div class="container">
-        <h4><%= @design.title %></h4>
+        <p><%= @design.title %></p>
         <% if current_user && current_user.collection_ids.include?(@design.collection_id) %>
           <%= link_to("编辑该设计的属性",edit_design_path(@design) ) %>
       <% end %>
@@ -22,7 +22,7 @@
         <% end %>
         </div>
         <h4>所在分类目录</h4>
-        <div class="category">
+        <div class="showCategory">
           <% if @category %>
           <%= @category.name %>
         <% else %>

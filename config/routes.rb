@@ -9,7 +9,6 @@ Sharehub::Application.routes.draw do
   end
   root :to => "designs#index"
 
-  resources :collections,:only => [:index]
   resources :designs,:only => [:index]
 
 

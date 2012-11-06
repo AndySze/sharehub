@@ -20,24 +20,11 @@ class DesignsController < ApplicationController
   end
 
   def create
-    @design = Design.new
-    @design.image = params[:design][:path].shift
+    @design = Design.new(params[:design])
     if @design.save
-      #redirect_to edit_design_path(@design)
-      respond_to do |format|
-        format.html {                                         #(html response is for browsers using iframe sollution)
-          render :json => [@design.to_jq_upload].to_json,
-          :content_type => 'text/html',
-          :layout => false
-        }
-        format.json {
-          render :json => [@design.to_jq_upload].to_json
-        }
-      end
-
+      redirect_to edit_design_path(@design)
     else
-      render :json => [{:error => "custom_failure"}], :status => 304
-      #redirect_to :back
+      redirect_to :back
     end
   end
 
@@ -49,6 +36,7 @@ class DesignsController < ApplicationController
 
   def edit
     @user = current_user
+    @collection = @user.collections.new
   end
 
   def update
