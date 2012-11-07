@@ -8,6 +8,8 @@
     <%= f.password_field :password %>
     <%= f.label :password_confirmation,"确认密码" %>
     <%= f.password_field :password_confirmation %>
+    <%= f.label :avatar,"上传头像" %>
+    <%= f.file_field :avatar %>
     <%= f.label :user_type,"我的身份" %>
     <p><%= f.radio_button(:user_type,"2") %>  我是设计师，我想分享设计，传播我的思想。</p>
     <p><%= f.radio_button(:user_type,"1") %>  家居爱好者，不是设计师，但我喜欢收藏精美的家居设计。</p>

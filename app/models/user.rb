@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :name, :user_type, :password,
-                  :password_confirmation, :remember_me
+                  :password_confirmation, :remember_me, :avatar
 
   validates :name,:presence => true,:uniqueness => true
   validates :user_type, :presence => { :message => "请选择用户类型" }

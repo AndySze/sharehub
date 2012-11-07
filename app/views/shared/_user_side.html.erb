@@ -1,6 +1,8 @@
 <div class="well sidebar">
-  <h4><%= user.name %></h4>
-  <p><%= user.email %></p>
+  <div class="userProfile clearfix">
+  <%= image_tag user.avatar.big.url,class:"pull-left avatar" %>
+  <h5><%= user.name %></h5>
+</div>
   <hr>
   <%= link_to "上传新设计", user, class:"btn btn-block btn-success btn-large" %>
   <hr>
@@ -31,8 +33,12 @@
   <div class="thumbnail">
     <%= link_to design = Design.all.sample do %>
       <%= image_tag(design.image.thumb,:alt => "explore", class:"img-rounded") %>
-      <p><i class="icon-user"></i>说:<%= design.title %></p>
   <% end %>
+      <%= link_to user_designs_path(design.collection.user) do %>
+        <%= image_tag design.collection.user.avatar.normal.url,class:"pull-left avatar" %>
+        <%= design.collection.user.name %>
+    <% end %>
+      <p><%= design.title %></p>
   </div>
 <% end %>
 </div>
