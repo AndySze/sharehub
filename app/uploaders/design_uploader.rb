@@ -14,9 +14,14 @@ class DesignUploader < CarrierWave::Uploader::Base
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "#{model.class.to_s.underscore}"
-
+  if Rails.env.production?
+    def store_dir
+      "#{model.class.to_s.underscore}"
+    end
+  else
+    def store_dir
+      "test_taolinggan"
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -32,7 +37,7 @@ class DesignUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_limit => [500, nil]
+  process :resize_to_limit => [700, nil]
 
   version :thumb do
     process :resize_to_limit => [210, nil]

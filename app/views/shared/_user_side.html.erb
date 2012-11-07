@@ -26,13 +26,12 @@
     </li>
   <% end %>
   </ul>
-  <h5>我关注的人</h5>
   <% if Design.any? %>
   <h5>发现</h5>
   <div class="thumbnail">
     <%= link_to design = Design.all.sample do %>
       <%= image_tag(design.image.thumb,:alt => "explore", class:"img-rounded") %>
-    <h3>发现</h3>
+      <p><i class="icon-user"></i>说:<%= design.title %></p>
   <% end %>
   </div>
 <% end %>
