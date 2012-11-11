@@ -4,8 +4,10 @@
   <h5><%= user.name %></h5>
 </div>
   <hr>
+  <% if current_user == user %>
   <%= link_to "上传新设计", user, class:"btn btn-block btn-success btn-large" %>
   <hr>
+<% end %>
   <ul class="nav nav-tabs nav-stacked">
     <li>
     <%= link_to user_collections_path(user) do %>

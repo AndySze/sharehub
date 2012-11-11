@@ -29,6 +29,8 @@ class UsersController < ApplicationController
       @collection = @user.collections.build
     end
 
+    @designs = @user.designs
+
   end
 
   def update

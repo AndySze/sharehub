@@ -1,5 +1,6 @@
 <ul class="thumbnails" >
   <div id="main">
+    <% if designs.any? %>
     <% designs.each do |design| %>
       <li class="item">
     <div class="thumbnail">
@@ -7,6 +8,7 @@
         <%= image_tag("#{design.image.thumb}",:alt => "#{design.title}", class:"img-rounded") %>
       <p> <%= "#{design.title}" %></p>
     <% end %>
+  <% end %>
     </div>
     </li>
   <% end %>

@@ -5,20 +5,25 @@
 
 
 
-      <h2>上传新设计</h2>
-      <% if current_user %>
+      <% if current_user == @user %>
+        <h3>上传新设计</h3>
         <div id="upload_design">
 
-        <%= form_for [@user,@design],:html => {:multitype => true } do |f| %>
-          <%= render 'shared/error_messages',object: f.object %>
-        <%= f.label :image,"选择设计图片" %>
-        <%= f.file_field :image %>
-        <%= f.hidden_field :collection_id %>
-        <!-- Link to trigger modal -->
-        <br>
-        <%= f.submit "上传设计",class:"btn btn-large btn-primary",:disable_with => "上传中..." %>
-      <% end %>
+          <%= form_for [@user,@design],:html => {:multitype => true } do |f| %>
+            <%= render 'shared/error_messages',object: f.object %>
+          <%= f.label :image,"选择设计图片" %>
+          <%= f.file_field :image %>
+          <%= f.hidden_field :collection_id %>
+          <br>
+          <%= f.submit "上传设计",class:"btn btn-large btn-primary",:disable_with => "上传中..." %>
+        <% end %>
       </div>
+      <hr>
+      <h4>我的设计</h4>
+      <%= render partial:"shared/content",locals:{designs:@designs} %>
+      <% else %>
+        <h3><%= @user.name %>的设计</h3>
+      <%= render partial:"shared/content",locals:{designs:@designs} %>
     <% end %>
     </div>
     <div class="span3">
