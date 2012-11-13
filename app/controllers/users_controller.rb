@@ -2,9 +2,6 @@ class UsersController < ApplicationController
 
   before_filter :get_user, :only => [:edit,:show, :update ]
 
-  def get_user
-    @user = User.find(params[:id])
-  end
 
   def index
     @users = User.all
@@ -24,12 +21,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @designs = @user.designs
+
     if  current_user
       @design = @user.designs.build
       @collection = @user.collections.build
     end
-
-    @designs = @user.designs
+    #@designs = Design.order("created_at DESC")
 
   end
 
@@ -40,6 +38,12 @@ class UsersController < ApplicationController
     else
       render :back
     end
+  end
+
+  private
+
+  def get_user
+    @user = User.find(params[:id])
   end
 
 end

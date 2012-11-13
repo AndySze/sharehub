@@ -1,5 +1,5 @@
 <% @page_title = " | #{@current_tag.try(:name)}的设计" %>
-  <div class="well">
+  <div class="box">
     <h4>按照分类目录筛选</h4>
     <% @categorys.each do |category| %>
       <%= link_to category,class:"btn" do %>
@@ -14,5 +14,7 @@
 
     <%= render partial:"shared/tag_list",locals:{tags:@tags,current_tag:@current_tag} %>
 
+    <div class="box">
   <%= render partial:"shared/content",locals:{designs:@designs} %>
+</div>
   <%= render "shared/flow_script" %>

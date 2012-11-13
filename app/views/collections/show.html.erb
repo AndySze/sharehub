@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="span9">
+      <div class="box">
       <h3><%= @collection.name %></h3>
     <ul class="thumbnails">
       <% @collection.designs.each do |design| %>
@@ -15,7 +16,8 @@
         </li>
     <% end %><!-- end of collection.designs.each -->
   </ul>
-    </div>
+</div ><!-- end of box -->
+    </div> <!-- end of span9 -->
     <div class="span3">
       <%= render partial:"shared/user_side",locals:{:user => @user} %>
       </div>

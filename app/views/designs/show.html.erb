@@ -2,35 +2,43 @@
 <div class="container">
   <div class="row">
     <div class="span9">
+      <div class="box">
       <div class="page-header">
         <h4><%= @user.name %>的设计收藏</h4>
       </div>
-      <div class="container">
-        <p><%= @design.title %></p>
-        <% if current_user && current_user.collection_ids.include?(@design.collection_id) %>
-          <%= link_to("编辑该设计的属性",edit_design_path(@design) ) %>
-      <% end %>
         <div class="design-display">
           <%= image_tag("#{@design.image}",alt:"#{@design.title}") %>
+          <div class="designTitle clearfix">
+            <div class="pull-left">
+                <%= link_to user_designs_path(@collection.user) do %>
+                  <%= image_tag @design.collection.user.avatar.normal.url,class:"pull-left avatar" %>
+                  <%= @design.collection.user.name %>
+                <% end %>
+                <span class="designTime">发表于
+                <%= time_ago_in_words(@design.created_at) %>
+              </span>
+        <p><%= @design.title %></p>
+      </div>
+        <div class="editDesign">
+            <% if current_user && current_user.collection_ids.include?(@design.collection_id) %>
+              <%= link_to("编辑该设计的属性",edit_design_path(@design) ) %>
+          <% end %>
+        </div>
+      </div>
         </div>
         <h4>所在灵感集</h4>
-        <div class="collection">
           <%= @collection.name %>
-        <% if @current_user && @current_user.collection_ids.include?(@design.collection_id) %>
+        <% if current_user && current_user.collection_ids.include?(@design.collection_id) %>
           <!-- Link to trigger modal -->
-          <a href="#editCollection" role="button" class="" data-toggle="modal">修改专辑名称</a>
+          <a href="#editCollection" role="button" class="btn btn-small" data-toggle="modal" title="修改专辑名称"><i class="icon-edit"></i></a>
         <% end %>
-        </div>
         <h4>所在分类目录</h4>
-        <div class="showCategory">
           <% if @category %>
           <%= @category.name %>
         <% else %>
           <%= "其它分类" %>
         <% end %>
-        </div>
         <h4>所属标签</h4>
-        <div class="tags">
           <% if @design.tags.any? %>
             <% @design.tags.each do |tag| %>
               <%= link_to "#{tag.name}",tag,class:"btn" %>
@@ -38,8 +46,29 @@
           <% else %>
             <p>此设计还没有设置标签</p>
           <% end %>
+        </div> <!-- end of div box -->
+        <div class="box comments">
+        <h4>此设计的评论</h4>
+          <% if current_user %>
+            <%= form_for [@design,@comment] do |f| %>
+              <%= f.text_area 'content',rows:4,:style => "width:90%" %>
+              <%= f.hidden_field :user_id,:value => "#{current_user.id}" %>
+              <%= f.submit '添加评论' %>
+            <% end %>
+          <% end %>
+          <% @design.comments.order("created_at DESC").each do |comment| %>
+            <div class="singleComment">
+                <%= link_to user_designs_path(comment.user) do %>
+                  <%= image_tag comment.user.avatar.normal.url,class:"pull-left avatar" %>
+                  <%= comment.user.name %>
+                <% end %>
+                <span class="commentTime">发表于
+                <%= time_ago_in_words(comment.created_at) %>
+              </span>
+                <p><%= comment.content %></p>
+            </div>
+          <% end %>
         </div>
-      </div>
     </div>
     <div class="span3">
       <%= render partial: "shared/user_side",locals: {:user => @user} %>

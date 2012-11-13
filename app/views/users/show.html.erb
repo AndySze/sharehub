@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="span9">
+      <div class="box">
 
 
 
@@ -19,13 +20,14 @@
         <% end %>
       </div>
       <hr>
-      <h4>我的设计</h4>
+        <h4>我的设计</h4>
       <%= render partial:"shared/content",locals:{designs:@designs} %>
       <% else %>
         <h3><%= @user.name %>的设计</h3>
       <%= render partial:"shared/content",locals:{designs:@designs} %>
     <% end %>
-    </div>
+  </div><!-- end of box -->
+</div><!-- end of span9 -->
     <div class="span3">
       <%= render partial:"shared/user_side",locals:{:user => @user} %>
     </div>
@@ -33,7 +35,4 @@
 </div>
 
 
-
-<script type="text/javascript">
-//$("#newCollection").modal()                       // initialized with defaults
-</script>
+<%= render "shared/flow_script" %>

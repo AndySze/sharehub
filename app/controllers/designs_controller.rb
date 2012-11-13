@@ -29,9 +29,10 @@ class DesignsController < ApplicationController
   end
 
   def show
-    @collection = Collection.try(:find,@design.collection_id)
-    @user = User.find(@collection.user_id)
+    @collection = @design.collection
+    @user = @collection.user
     @category = Category.find(@design.category_id) if @design.category_id
+    @comment = @design.comments.build
   end
 
   def edit

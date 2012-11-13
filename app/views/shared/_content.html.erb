@@ -1,10 +1,10 @@
 <ul class="thumbnails" >
   <div id="main">
-    <% if designs.any? %>
-    <% designs.each do |design| %>
+    <% unless designs.empty? %>
+    <% designs.all.each do |design| %>
       <li class="item">
     <div class="thumbnail">
-      <%= link_to :controller => 'designs', :action => 'show',:id => design.id do %>
+      <%= link_to design_path(design) do %>
         <%= image_tag("#{design.image.thumb}",:alt => "#{design.title}", class:"img-rounded") %>
       <p> <%= "#{design.title}" %></p>
     <% end %>

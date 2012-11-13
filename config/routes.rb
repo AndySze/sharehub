@@ -12,6 +12,10 @@ Sharehub::Application.routes.draw do
   resources :categorys, only:[:show]
   resources :tags, only:[:show]
 
+  resources :designs,only:[:show] do
+    resources :comments
+  end
+
   resources :static_page, only:[:about,:help,:contact]
 
   match "/about" => "static_page#about"
