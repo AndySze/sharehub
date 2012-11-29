@@ -26,15 +26,14 @@
 
   <div class="box sidebar">
   <h5>TA的标签</h5>
-  <ul class="nav nav-tabs nav-stacked">
+    <div>
     <% user.tags.uniq.each do |tag| %>
-      <li><%= link_to tag do %>
-    <i class="icon-tag"></i> <%= "#{tag.name}" %>
-<% end %>
-    </li>
-  <% end %>
-  </ul>
-</div>
+      <%= link_to tag, class:"badge badge-success designTag" do %>
+        <i class="icon-tag icon-white"></i> <%= "#{tag.name}" %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
 
 <div class="box sidebar">
   <% if Design.any? %>
