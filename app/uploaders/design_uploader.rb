@@ -40,7 +40,7 @@ class DesignUploader < CarrierWave::Uploader::Base
   process :resize_to_limit => [700, nil]
 
   version :thumb do
-    process :resize_to_limit => [210, nil]
+    process :resize_to_limit => [360, nil]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

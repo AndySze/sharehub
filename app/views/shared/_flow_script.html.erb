@@ -1,12 +1,15 @@
 <!--用来实现图片列表自动排列 -->
 <script type="text/javascript">
 
-var $container = $('#main');
+var $container = $('#main'),i=200,r=10;
 $container.imagesLoaded(function(){
   $container.masonry({
     itemSelector : '.item',
-    columnWidth : 235
-  });
+    gutterWidth: r,
+    columnWidth : function(e) {
+                    var t, n;
+                    return n = e / i | 0, t = (e - (n - 1) * r) / n | 0, e < i && (t = e), $(".item").width(t), t
+                }})
 });
 
 </script>

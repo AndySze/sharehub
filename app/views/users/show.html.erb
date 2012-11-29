@@ -12,16 +12,14 @@
 
           <%= form_for [@user,@design],:html => {:multitype => true } do |f| %>
             <%= render 'shared/error_messages',object: f.object %>
-          <%= f.label :image,"选择设计图片" %>
-          <%= f.file_field :image %>
-          <%= f.hidden_field :collection_id %>
+            <%= f.label :image,"选择设计图片",:style =>"display:inline" %>
+          <%= f.file_field :image,:style =>"display:inline" %>
+          <%= f.label :collection_id,"所属灵感集",:style =>"display:inline" %>
+          <%= f.select :collection_id,@user.collections.all.collect{|s| [s.name,s.id]},:style =>"display:inline" %>
           <br>
-          <%= f.submit "上传设计",class:"btn btn-large btn-primary",:disable_with => "上传中..." %>
+          <%= f.submit "上传设计",class:"btn btn-large btn-primary",:disable_with => "上传中...",:style =>"display:inline" %>
         <% end %>
       </div>
-      <hr>
-        <h4>我的设计</h4>
-      <%= render partial:"shared/content",locals:{designs:@designs} %>
       <% else %>
         <h3><%= @user.name %>的设计</h3>
       <%= render partial:"shared/content",locals:{designs:@designs} %>

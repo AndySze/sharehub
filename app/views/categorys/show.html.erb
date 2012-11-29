@@ -6,12 +6,12 @@
   <div class="box">
     <h4>按照标签筛选</h4>
     <% @tags.each do |tag| %>
-      <%= link_to tag,class:"btn" do %>
-      <i class="icon-tag"></i>  <%= "#{tag.name}" %>
+      <%= link_to tag,class:"badge badge-success" do %>
+      <i class="icon-tag icon-white"></i>  <%= "#{tag.name}" %>
   <% end %>
   <% end %>
-    <%= link_to '/tags/others',class:"btn" do %>
-     <i class="icon-tag"></i>   其它标签
+    <%= link_to '/tags/others',class:"badge badge-success" do %>
+     <i class="icon-tag icon-white"></i>   其它标签
    <% end %>
   </div>
   <div class="box">

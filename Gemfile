@@ -22,7 +22,8 @@ gem 'carrierwave-aliyun'
 gem 'mini_magick'
 gem 'mime-types'
 gem 'devise'
-gem 'jquery-fileupload-rails'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # Gems used only for assets and not required
 # in production environments by default.

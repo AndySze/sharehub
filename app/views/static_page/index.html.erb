@@ -6,12 +6,12 @@
       <div class="box">
         <h4>按照分类目录筛选</h4>
         <% @categorys.each do |category| %>
-          <%= link_to category,class:"btn" do %>
-            <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+          <%= link_to category,class:"badge badge-success designTag" do %>
+            <i class="icon-folder-open icon-white"></i>   <%= "#{category.name}" %>
           <% end %>
         <% end %>
-        <%= link_to 'categorys/others',class:"btn" do %>
-          <i class="icon-folder-open"></i>   <%= "其它设计" %>
+        <%= link_to 'categorys/others',class:"badge badge-success designTag" do %>
+          <i class="icon-folder-open icon-white"></i>   <%= "其它设计" %>
         <% end %>
       </div>
 
@@ -19,18 +19,19 @@
       <div class="box">
         <h4>按照标签筛选</h4>
         <% @tags.each do |tag| %>
-          <%= link_to tag,class:"btn" do %>
-            <i class="icon-tag"></i>   <%= "#{tag.name}" %>
+          <%= link_to tag,class:"badge badge-success designTag" do %>
+            <i class="icon-tag icon-white"></i>   <%= "#{tag.name}" %>
           <% end %>
         <% end %>
-        <%= link_to 'tags/others',class:"btn" do %>
-          <i class="icon-tag"></i>   其它标签
+        <%= link_to 'tags/others',class:"badge badge-success designTag" do %>
+          <i class="icon-tag icon-white"></i>   其它标签
         <% end %>
       </div>
 
-        <div class="box">
+        <div class="">
         <h3>最新上传的设计</h3>
         <%= render partial:"shared/content",locals:{designs:@designs} %>
+        <%= paginate @designs, :theme => 'twitter-bootstrap' %>
       </div>
     </div> <!-- end of div class="span12" -->
 

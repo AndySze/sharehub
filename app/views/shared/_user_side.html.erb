@@ -3,11 +3,6 @@
   <%= image_tag user.avatar.big.url,class:"pull-left avatar" %>
   <h5><%= user.name %></h5>
 </div>
-  <hr>
-  <% if current_user == user %>
-  <%= link_to "上传新设计", user, class:"btn btn-block btn-success btn-large" %>
-  <hr>
-<% end %>
   <ul class="nav nav-tabs nav-stacked">
     <li>
     <%= link_to user_collections_path(user) do %>
@@ -21,6 +16,15 @@
   <% end %>
     </li>
   </ul>
+
+</div> <!-- end of .box .sidebar-->
+
+  <% if current_user == user %>
+    <%= link_to "上传新设计", user, class:"btn btn-block btn-success btn-large" %>
+  <% end %>
+  <br>
+
+  <div class="box sidebar">
   <h5>TA的标签</h5>
   <ul class="nav nav-tabs nav-stacked">
     <% user.tags.uniq.each do |tag| %>
@@ -30,10 +34,13 @@
     </li>
   <% end %>
   </ul>
+</div>
+
+<div class="box sidebar">
   <% if Design.any? %>
   <h5>发现</h5>
-  <div class="thumbnail">
-    <%= link_to design = Design.all.sample do %>
+  <div class="thumbnail clearfix">
+    <%= link_to design = Design.all.sample,class:"design" do %>
       <%= image_tag(design.image.thumb,:alt => "explore", class:"img-rounded") %>
   <% end %>
       <%= link_to user_designs_path(design.collection.user) do %>

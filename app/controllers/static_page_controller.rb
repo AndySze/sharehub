@@ -12,7 +12,7 @@ class StaticPageController < ApplicationController
   def index
     @categorys = Category.all
     @tags = Tag.all
-    @designs = Design.order("created_at DESC")
+    @designs = Design.order("created_at DESC").page params[:page]
   end
 
 end

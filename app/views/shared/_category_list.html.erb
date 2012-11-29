@@ -3,23 +3,23 @@
   <% categorys.each do |category| %>
 
     <% if current_category && category.id == current_category.id %>
-    <%= link_to '#',class:"btn disabled" do %>
-    <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+    <%= link_to '#',class:"badge" do %>
+    <i class="icon-folder-open icon-white"></i>   <%= "#{category.name}" %>
 <% end %>
   <% else %>
-    <%= link_to category,class:"btn" do %>
-    <i class="icon-folder-open"></i>   <%= "#{category.name}" %>
+    <%= link_to category,class:"badge badge-success" do %>
+    <i class="icon-folder-open icon-white"></i>   <%= "#{category.name}" %>
 <% end %>
   <% end %>
 <% end %>
 
   <% if current_category %>
-    <%= link_to 'others',class:"btn" do %>
-    <i class="icon-folder-open"></i>   其它设计
+    <%= link_to 'others',class:"badge badge-success" do %>
+    <i class="icon-folder-open icon-white"></i>   其它设计
   <% end %>
   <% else %>    
-    <%= link_to '#',class:"btn disabled" do %>
-    <i class="icon-folder-open"></i>   其它设计
+    <%= link_to '#',class:"badge " do %>
+    <i class="icon-folder-open icon-white"></i>   其它设计
   <% end %>
   <% end %>      
 </div>

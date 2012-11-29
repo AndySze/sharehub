@@ -4,10 +4,10 @@
     <% designs.all.each do |design| %>
       <li class="item">
     <div class="thumbnail">
-      <%= link_to design_path(design) do %>
+      <%= link_to design_path(design),class:"design" do %>
         <%= image_tag("#{design.image.thumb}",:alt => "#{design.title}", class:"img-rounded") %>
-      <p> <%= "#{design.title}" %></p>
     <% end %>
+      <p class="designListTitle"> <%= "#{design.title}" %></p>
   <% end %>
     </div>
     </li>

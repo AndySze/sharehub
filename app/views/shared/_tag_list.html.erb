@@ -3,23 +3,23 @@
   <% tags.each do |tag| %>
 
     <% if current_tag && tag.id == current_tag.id %>
-    <%= link_to '#',class:"btn disabled" do %>
-      <i class="icon-tag"></i>   <%= "#{tag.name}" %>
+    <%= link_to '#',class:"badge " do %>
+      <i class="icon-tag icon-white"></i>   <%= "#{tag.name}" %>
   <% end %>
   <% else %>
-    <%= link_to tag,class:"btn" do %>
-      <i class="icon-tag"></i>   <%= "#{tag.name}" %>
+    <%= link_to tag,class:"badge badge-success" do %>
+      <i class="icon-tag icon-white"></i>   <%= "#{tag.name}" %>
   <% end %>
   <% end %>
 <% end %>
 
   <% if current_tag %>
-    <%= link_to 'others',class:"btn" do %>
-      <i class="icon-tag"></i>   未指定标签
+    <%= link_to 'others',class:"badge badge-success" do %>
+      <i class="icon-tag icon-white"></i>   未指定标签
   <% end %>
   <% else %>    
-    <%= link_to '#',class:"btn disabled" do %>
-      <i class="icon-tag"></i>   未指定标签
+    <%= link_to '#',class:"badge " do %>
+      <i class="icon-tag icon-white"></i>   未指定标签
   <% end %>
   <% end %>      
 </div>
