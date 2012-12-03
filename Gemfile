@@ -24,6 +24,7 @@ gem 'mime-types'
 gem 'devise'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
