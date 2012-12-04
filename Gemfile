@@ -18,7 +18,7 @@ end
 
 gem 'carrierwave'
 gem 'rest-client'
-gem 'carrierwave-aliyun'
+gem 'carrierwave-aliyun',   '~> 0.1.1'
 gem 'mini_magick'
 gem 'mime-types'
 gem 'devise'
