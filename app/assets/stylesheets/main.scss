@@ -36,6 +36,10 @@ $navbarLinkColorHover: #fff;
   line-height: 18px;
 }
 
+.inline {
+  display:inline
+}
+
 .main {
   position: relative;
   padding: 20px 19px 14px;
@@ -150,6 +154,7 @@ $navbarLinkColorHover: #fff;
   border-top-width:5px;
   border-top-color:$green;
   margin:10px 0;
+  padding: 0 10px;
 }
 
 footer {
