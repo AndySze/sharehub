@@ -11,6 +11,7 @@ bundle install
 ```
 ### Database setup & Go
 ```
+cp config/database-sample.yml config/database.yml 
 rake db:migrate
 rails s
 ```
