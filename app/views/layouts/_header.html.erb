@@ -1,11 +1,7 @@
 <div class="navbar ">
   <div class="navbar-inner">
     <div class="container clearfix">
-      <%= link_to root_url,class:"brand " do %>
-        <%= image_tag "taolinggan_logo.png" %>
-      <% end %>
-      <h1>寻找灵感，产生创意，创建家居灵感集</h1>
-
+      <%= link_to "Share Hub",root_url,class:"brand " %>
       <% if current_user %>
         <div class="nav pull-right">
         <li class="dropdown">
@@ -28,10 +24,10 @@
       </ul>
     <% end %>
         <ul class="nav">
-          <li class="divider-vertical"><%= link_to "浏览设计",root_path,class:"" %></li>
-          <li class="divider-vertical"><%= link_to "帮助",help_path,class:"" %></li>
-          <li class="divider-vertical"><%= link_to "关于",about_path,class:"" %></li>
-          <li class="divider-vertical"><%= link_to "联系我们",contact_path,class:"" %></li>
+          <li class=""><%= link_to "浏览设计",root_path,class:"" %></li>
+          <li class=""><%= link_to "帮助",help_path,class:"" %></li>
+          <li class=""><%= link_to "关于",about_path,class:"" %></li>
+          <li class=""><%= link_to "联系我们",contact_path,class:"" %></li>
         </ul>
     </div>
   </div>
