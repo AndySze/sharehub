@@ -7,14 +7,15 @@ gem 'rails', '3.2.8'
 
 group :development do
   gem 'sqlite3'
-  gem 'thin'
 end
 
 group :production do
   gem 'pg'
-  gem 'unicorn'
+  #gem 'unicorn'
 end
 #attachment management
+
+gem 'thin'
 
 gem 'carrierwave'
 gem 'rest-client'
