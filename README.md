@@ -2,6 +2,8 @@
 
 This is my first rails app.For Picture and Photo Sharing.
 
+Live demo on heroku:http://sharehub-andy.herokuapp.com/
+
 ## Install
 ### Get the code
 ```
